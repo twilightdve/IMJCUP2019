@@ -1,11 +1,9 @@
-const { VueLoaderPlugin } = require('vue-loader');
-
 module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   devServer: {
     contentBase: `${__dirname}/dist`,
     open: true,
-    port: 3121
+    port: 2018
   },
   entry: {
     app: `${__dirname}/src/webpack/app`
@@ -17,38 +15,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'vue-loader',
-            options: {
-              loaders: {
-                js: 'babel-loader'
-              }
-            }
-          },
-          {
-            loader:
-              process.env.NODE_ENV === 'production'
-                ? 'strip-loader?strip[]=console.log'
-                : 'strip-loader?strip[]='
-          }
-        ]
-      },
-      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader'
           },
-          {
-            loader:
-              process.env.NODE_ENV === 'production'
-                ? 'strip-loader?strip[]=console.log'
-                : 'strip-loader?strip[]='
-          }
         ]
       },
       {
@@ -58,9 +30,6 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          {
-            loader: 'vue-style-loader'
-          },
           {
             loader: 'css-loader',
             options: { importLoaders: 2 }
@@ -75,21 +44,8 @@ module.exports = {
       }
     ]
   },
-  // optimization: {
-  //   splitChunks: {
-  //     name: 'vendor',
-  //     chunks: 'initial'
-  //   }
-  // },
   resolve: {
-    alias: {
-      vue:
-        process.env.NODE_ENV === 'production'
-          ? 'vue/dist/vue.min.js'
-          : 'vue/dist/vue.js'
-    },
-    extensions: ['*', '.js', '.vue', '.json']
+    extensions: ['*', '.js', '.json']
   },
-  plugins: [new VueLoaderPlugin()],
   devtool: 'source-map'
 };

@@ -3,26 +3,30 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/sunnymerryAce/IMJCUP2018.git",
-  "author": "Yoichiro Hirano\",
+  "author": "Yoichiro Hirano",
   "license": "MIT",
   "scripts": {
     "start": "npm run dev & npm run server",
-    "dev": "webpack --watch --mode development",
-    "prod": "NODE_ENV=production webpack --mode production",
-    "watch:pug": "chokidar './src/pug/*.pug' --command 'npm run build:pug'",
+    "build": "NODE_ENV=production webpack --mode production",
+    "dev": "npm-run-all -p 'build:*' webpack_dev 'watch:*' server",
+    "pro": "npm-run-all -p 'build:*' webpack_pro copy",
     "build:pug": "pug ./src/pug/*.pug --pretty -o ./dist",
+    "build:sass": "node-sass ./src/scss -o ./dist/css && npm run postcss",
     "watch:sass": "chokidar './src/scss/*.scss' --command 'npm run build:sass'",
-    "build:sass": "node-sass ./src/scss/*.scss -o ./dist/css",
-    "watch:assets": "chokidar './src/assets/**/*' --command 'npm run copy'",
+    "webpack_dev": "webpack --watch --mode development",
+    "webpack_pro": "NODE_ENV=production webpack --mode production",
     "copy": "cpx \"./src/assets/**/*\" ./dist/assets",
-    "server": "webpack-dev-server",
-    "postcss": "postcss dist/css/style.css -c ./postcss.config.js -o dist/css/style.css",
+    "watch:pug": "chokidar './src/pug/*.pug' --command 'npm run build:pug'",
+    "watch:assets": "chokidar './src/assets/**/*' --command 'npm run copy'",
+    "server": "browser-sync start --server './dist'",
+    "postcss": "postcss dist/css -c ./postcss.config.js --dir dist/css",
     "pngquant": "pngquant --ext .png --force ./src/assets/images/*.png ./src/assets/images/*.png"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
+    "browser-sync": "^2.24.4",
     "chokidar-cli": "^1.2.0",
     "cpx": "^1.5.0",
     "eslint": "^4.19.1",
@@ -43,6 +47,7 @@
   },
   "dependencies": {
     "autoprefixer": "^8.5.0",
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "velocity-animate": "^1.5.1"
   }
 }
