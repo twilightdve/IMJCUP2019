@@ -1,7 +1,7 @@
 module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   devServer: {
-    contentBase: `${__dirname}/dist`,
+    contentBase: `${__dirname}/docs`,
     open: true,
     port: 2018
   },
@@ -9,7 +9,7 @@ module.exports = {
     app: `${__dirname}/src/webpack/app`
   },
   output: {
-    path: `${__dirname}/dist/`,
+    path: `${__dirname}/docs/`,
     filename: '[name].bundle.js'
   },
   module: {
