@@ -99,6 +99,10 @@ body {
   width: 460px;
   margin: 0 auto;
   padding-top: 145px;
+  @media(min-width: 751px) {
+    width: 370px;
+    padding-top: 125px;
+  }
 }
 .menu__item {
   width: 100%;
@@ -106,6 +110,9 @@ body {
   margin-bottom: 5px;
   background-repeat: no-repeat;
   background-position: center center;
+  @media(min-width: 751px) {
+    height: 60px;
+  }
 }
 .menu__item__top {
   display: block;
