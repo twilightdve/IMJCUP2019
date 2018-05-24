@@ -35,7 +35,7 @@ body {
   background-position: center center;
 }
 .menu__item__top {
-  background-image: url(../assets/images/menu__top-sp.png);
+  background-image: url(../assets/images/menu__top__lined-sp.png);
   cursor: pointer;
 }
 .menu__item__summary {
@@ -111,6 +111,13 @@ body {
   .kv__date-sp {
     position: absolute;
     top: 690px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+  }
+  .kv__scrolldown {
+    position: absolute;
+    top: 930px;
     right: 0;
     left: 0;
     margin: 0 auto;

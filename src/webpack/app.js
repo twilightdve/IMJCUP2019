@@ -7,6 +7,7 @@ class Index {
     this.$menu = document.querySelector('.menu__main');
     this.$overlay = document.querySelector('.menu__overlay');
     this.$menuTopButton = document.querySelector('.menu__item__top');
+    this.$menuSummaryButton = document.querySelector('.menu__item__summary');
     this.isOpen = false;
     this.initialize();
   }
@@ -15,7 +16,13 @@ class Index {
     this.$menuButton.addEventListener('click', () => {
       this.toggleMenu();
     });
+    this.$overlay.addEventListener('click', () => {
+      this.toggleMenu();
+    });
     this.$menuTopButton.addEventListener('click', () => {
+      this.toggleMenu();
+    });
+    this.$menuSummaryButton.addEventListener('click', () => {
       this.toggleMenu();
     });
   }
