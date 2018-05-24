@@ -258,7 +258,6 @@ body {
 .menu__main {
   position: fixed;
   width: 100%;
-  max-width: 1500px;
   height: 520px;
   background: #380959;
   z-index: 3; }
@@ -310,7 +309,6 @@ body {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  max-width: 1500px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
