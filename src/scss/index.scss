@@ -42,7 +42,7 @@ body {
   background-position: center center;
 }
 .menu__item__top {
-  background-image: url(../assets/images/menu__top.png);
+  background-image: url(../assets/images/menu__top__lined.png);
   cursor: pointer;
 }
 .menu__item__summary {
@@ -54,20 +54,6 @@ body {
 }
 .menu__item__history {
   background-image: url(../assets/images/menu__history.png);
-}
-.top__selected {
-  position: relative;
-}
-.top__selected:after {
-  content: '';
-  position: absolute;
-  top: calc(50% - 2px);
-  right: 0;
-  left: 0;
-  margin: 0 auto;
-  width: 100px;
-  height: 4px;
-  background: #fff;
 }
 
 .navi {
