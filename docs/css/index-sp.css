@@ -311,7 +311,9 @@ body {
   .navi .navi__menu {
     width: 60px;
     height: 60px;
-    cursor: pointer; }
+    cursor: pointer;
+    -webkit-transition: background 0.3s;
+    transition: background 0.3s; }
   .navi .navi__menu__line {
     background-image: url(../assets/images/menu-sp.png);
     background-repeat: no-repeat;
@@ -331,13 +333,19 @@ body {
   text-align: center; }
   .kv__wrapper .kv__kv-sp {
     margin-top: -126px; }
-  .kv__wrapper .kv__title-sp {
+  .kv__wrapper .kv__anniversary {
     position: absolute;
     top: 170px;
     right: 0;
     left: 0;
     margin: 0 auto; }
-  .kv__wrapper .kv__date-sp {
+  .kv__wrapper .kv__title {
+    position: absolute;
+    top: 432px;
+    right: 0;
+    left: 0;
+    margin: 0 auto; }
+  .kv__wrapper .kv__date {
     position: absolute;
     top: 690px;
     right: 0;

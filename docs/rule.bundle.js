@@ -66,7 +66,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/webpack/app.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/webpack/rule.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -15461,10 +15461,10 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./src/webpack/app.js":
-/*!****************************!*\
-  !*** ./src/webpack/app.js ***!
-  \****************************/
+/***/ "./src/webpack/rule.js":
+/*!*****************************!*\
+  !*** ./src/webpack/rule.js ***!
+  \*****************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -15482,23 +15482,20 @@ class Index {
     this.$menuButton = document.querySelector('.navi__menu');
     this.$menu = document.querySelector('.menu__main');
     this.$overlay = document.querySelector('.menu__overlay');
-    this.$menuTopButton = document.querySelector('.menu__item__top');
     this.$menuSummaryButton = document.querySelector('.menu__item__summary');
     this.isOpen = false;
     this.initialize();
   }
 
   initialize() {
-    this.$menuButton.addEventListener('click', () => {
+    const _click = window.ontouchstart === undefined ? 'click' : 'touchstart';
+    this.$menuButton.addEventListener(_click, () => {
       this.toggleMenu();
     });
-    this.$overlay.addEventListener('click', () => {
+    this.$overlay.addEventListener(_click, () => {
       this.toggleMenu();
     });
-    this.$menuTopButton.addEventListener('click', () => {
-      this.toggleMenu();
-    });
-    this.$menuSummaryButton.addEventListener('click', () => {
+    this.$menuSummaryButton.addEventListener(_click, () => {
       this.toggleMenu();
     });
   }
@@ -15544,4 +15541,4 @@ window.IMJCUP2018.INDEX = window.IMJCUP2018.INDEX || new Index();
 /***/ })
 
 /******/ });
-//# sourceMappingURL=app.bundle.js.map
+//# sourceMappingURL=rule.bundle.js.map

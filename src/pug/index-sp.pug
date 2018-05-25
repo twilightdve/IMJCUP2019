@@ -8,7 +8,7 @@ block vars
   - var style       = './css/index-sp.css'
 
 block script
-  script(charset="UTF-8" src="./app.bundle.js")
+  script(charset="UTF-8" src="./index.bundle.js")
 block contents
   main#main
     .menu__overlay(style='display:none')
@@ -24,10 +24,13 @@ block contents
       .navi__menu.navi__menu__line
 
     .kv__wrapper
+
       img.kv__kv-sp(src='./assets/images/kv-sp.png')
-      img.kv__title-sp(src='./assets/images/title-sp.png')
-      img.kv__date-sp(src='./assets/images/date-sp.png')
-      img.kv__scrolldown(src='./assets/images/scrolldown.png')
+      img.kv__anniversary(src='./assets/images/kv__anniversary-sp.png')(style='display:none')
+      img.kv__title(src='./assets/images/kv__title-sp.png')(style='display:none')
+      img.kv__date(src='./assets/images/kv__date-sp.png')(style='display:none')
+      img.kv__scrolldown(src='./assets/images/scrolldown.png')(style='display:none')
+      .js-pctext(style='display:none')
       a(href='rule.html').about
         img(src='./assets/images/about-sp.png')
       .footer

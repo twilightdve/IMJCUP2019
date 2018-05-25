@@ -42,9 +42,15 @@ body {
     width: 60px;
     height: 60px;
     @media(min-width: 751px) {
-      width: 32px;
-      height: 32px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
       cursor: pointer;
+      margin: -15px 0 0 -15px;
+      transition: background 0.3s;
+      &:hover {
+        background-color: rgba(255,255,255,0.2);
+      }
     }
   }
   .navi__menu__line {
@@ -70,10 +76,18 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     @media(min-width: 751px) {
-      width: 32px;
-      height: 32px;
       cursor: pointer;
       background-image: url(../assets/images/facebook.png);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      margin: -10px -10px 0 0;
+      background-repeat: no-repeat;
+      background-position: center center;
+      transition: background 0.3s;
+      &:hover {
+        background-color: rgba(255,255,255,0.2);
+      }
     }
   }
 }
@@ -110,8 +124,15 @@ body {
   margin-bottom: 5px;
   background-repeat: no-repeat;
   background-position: center center;
+  transition: all 0.3s;
   @media(min-width: 751px) {
     height: 60px;
+  }
+}
+.menu__item--active {
+  &:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em rgba(255,255,255,0.2);
+    transform: translateY(-0.25em);
   }
 }
 .menu__item__top {
@@ -351,7 +372,19 @@ body {
   bottom: 90px;
   left: 30px;
   @media(min-width: 751px) {
+    display: block;
     bottom: 60px;
-    left: 30px;
+    left: 44px;
+    width: 160px;
+    height: 40px;
+    background-image: url(../assets/images/footer__facebook.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: all 0.3s;
+    &:hover {
+      box-shadow: 0 0.5em 0.5em -0.4em rgba(255,255,255,0.2);
+      transform: translateY(-0.25em);
+    }
+
   }
 }

@@ -6,23 +6,20 @@ class Index {
     this.$menuButton = document.querySelector('.navi__menu');
     this.$menu = document.querySelector('.menu__main');
     this.$overlay = document.querySelector('.menu__overlay');
-    this.$menuTopButton = document.querySelector('.menu__item__top');
     this.$menuSummaryButton = document.querySelector('.menu__item__summary');
     this.isOpen = false;
     this.initialize();
   }
 
   initialize() {
-    this.$menuButton.addEventListener('click', () => {
+    const _click = window.ontouchstart === undefined ? 'click' : 'touchstart';
+    this.$menuButton.addEventListener(_click, () => {
       this.toggleMenu();
     });
-    this.$overlay.addEventListener('click', () => {
+    this.$overlay.addEventListener(_click, () => {
       this.toggleMenu();
     });
-    this.$menuTopButton.addEventListener('click', () => {
-      this.toggleMenu();
-    });
-    this.$menuSummaryButton.addEventListener('click', () => {
+    this.$menuSummaryButton.addEventListener(_click, () => {
       this.toggleMenu();
     });
   }

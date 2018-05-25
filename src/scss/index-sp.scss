@@ -75,6 +75,7 @@ body {
     width: 60px;
     height: 60px;
     cursor: pointer;
+    transition: background 0.3s;
   }
   .navi__menu__line {
     background-image: url(../assets/images/menu-sp.png);
@@ -101,14 +102,21 @@ body {
   .kv__kv-sp {
     margin-top: -126px;
   }
-  .kv__title-sp {
+  .kv__anniversary {
     position: absolute;
     top: 170px;
     right: 0;
     left: 0;
     margin: 0 auto;
   }
-  .kv__date-sp {
+  .kv__title {
+    position: absolute;
+    top: 432px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+  }
+  .kv__date {
     position: absolute;
     top: 690px;
     right: 0;

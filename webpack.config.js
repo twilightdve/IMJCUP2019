@@ -6,7 +6,8 @@ module.exports = {
     port: 2018
   },
   entry: {
-    app: `${__dirname}/src/webpack/app`
+    index: `${__dirname}/src/webpack/index`,
+    rule: `${__dirname}/src/webpack/rule`
   },
   output: {
     path: `${__dirname}/docs/`,
@@ -20,7 +21,7 @@ module.exports = {
         use: [
           {
             loader: 'babel-loader'
-          },
+          }
         ]
       },
       {

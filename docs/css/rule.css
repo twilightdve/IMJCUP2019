@@ -279,9 +279,15 @@ body {
     height: 60px; }
     @media (min-width: 751px) {
       .navi .navi__menu {
-        width: 32px;
-        height: 32px;
-        cursor: pointer; } }
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        cursor: pointer;
+        margin: -15px 0 0 -15px;
+        -webkit-transition: background 0.3s;
+        transition: background 0.3s; }
+        .navi .navi__menu:hover {
+          background-color: rgba(255, 255, 255, 0.2); } }
   .navi .navi__menu__line {
     background-image: url(../assets/images/menu-sp.png);
     background-repeat: no-repeat;
@@ -304,10 +310,18 @@ body {
     background-position: center center; }
     @media (min-width: 751px) {
       .navi .navi__facebook {
-        width: 32px;
-        height: 32px;
         cursor: pointer;
-        background-image: url(../assets/images/facebook.png); } }
+        background-image: url(../assets/images/facebook.png);
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        margin: -10px -10px 0 0;
+        background-repeat: no-repeat;
+        background-position: center center;
+        -webkit-transition: background 0.3s;
+        transition: background 0.3s; }
+        .navi .navi__facebook:hover {
+          background-color: rgba(255, 255, 255, 0.2); } }
 
 .menu__overlay {
   position: fixed;
@@ -340,10 +354,18 @@ body {
   height: 90px;
   margin-bottom: 5px;
   background-repeat: no-repeat;
-  background-position: center center; }
+  background-position: center center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s; }
   @media (min-width: 751px) {
     .menu__item {
       height: 60px; } }
+
+.menu__item--active:hover {
+  -webkit-box-shadow: 0 0.5em 0.5em -0.4em rgba(255, 255, 255, 0.2);
+          box-shadow: 0 0.5em 0.5em -0.4em rgba(255, 255, 255, 0.2);
+  -webkit-transform: translateY(-0.25em);
+          transform: translateY(-0.25em); }
 
 .menu__item__top {
   display: block;
@@ -547,5 +569,18 @@ body {
   left: 30px; }
   @media (min-width: 751px) {
     .footer__facebook {
+      display: block;
       bottom: 60px;
-      left: 30px; } }
+      left: 44px;
+      width: 160px;
+      height: 40px;
+      background-image: url(../assets/images/footer__facebook.png);
+      background-repeat: no-repeat;
+      background-position: center center;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s; }
+      .footer__facebook:hover {
+        -webkit-box-shadow: 0 0.5em 0.5em -0.4em rgba(255, 255, 255, 0.2);
+                box-shadow: 0 0.5em 0.5em -0.4em rgba(255, 255, 255, 0.2);
+        -webkit-transform: translateY(-0.25em);
+                transform: translateY(-0.25em); } }

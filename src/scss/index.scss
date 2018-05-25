@@ -40,6 +40,13 @@ body {
   margin-bottom: 5px;
   background-repeat: no-repeat;
   background-position: center center;
+  transition: all 0.3s;
+}
+.menu__item--active {
+  &:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em rgba(255,255,255,0.2);
+    transform: translateY(-0.25em);
+  }
 }
 .menu__item__top {
   background-image: url(../assets/images/menu__top__lined.png);
@@ -67,9 +74,15 @@ body {
   z-index: 5;
 }
 .navi .navi__menu {
-  width: 32px;
-  height: 32px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
   cursor: pointer;
+  margin: -15px 0 0 -15px;
+  transition: background 0.3s;
+  &:hover {
+    background-color: rgba(255,255,255,0.2);
+  }
 }
 .navi .navi__menu__line {
   background-image: url(../assets/images/menu.png);
@@ -82,8 +95,19 @@ body {
   background-position: center center;
 }
 .navi .navi__facebook {
-  width: 32px;
-  height: 32px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin: -10px -10px 0 0;
+  background-image: url(../assets/images/facebook.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: background 0.3s;
+  &:hover {
+    background-color: rgba(255,255,255,0.2);
+  }
+  img {
+  }
 }
 
 .kv__wrapper {
@@ -142,16 +166,38 @@ body {
 .about {
   position: absolute;
   top: 78%;
-  right: 11%;
+  left: 65%;
   display: block;
   width: 242px;
   height: 56px;
+  padding-right: 15px;
   border: 1px solid #480C7E;
   background: #fff;
-}
-@media(max-width:1275px) {
-  .about {
-    left: 80%;
+  transition: all 0.3s;
+  color: #480C7E;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 56px;
+  text-decoration: none;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 7px 0 7px 10px;
+    border-color: transparent transparent transparent #490c7e;
+  }
+  &:hover {
+    box-shadow: inset 15em 0 0 0 #42107f;
+    color: #FFF;
+    border-color: #fff;
+    font-weight: normal;
+    &:after {
+      border-color: transparent transparent transparent #fff;
+    }
   }
 }
 .about img {
@@ -169,10 +215,15 @@ body {
   position: absolute;
   display: block;
   bottom: 60px;
-  left: 0;
-  width: 136px;
-  height: 32px;
-  img {
-    width: 100%;
+  left: 44px;
+  width: 160px;
+  height: 40px;
+  background-image: url(../assets/images/footer__facebook.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: all 0.3s;
+  &:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em rgba(255,255,255,0.2);
+    transform: translateY(-0.25em);
   }
 }
