@@ -385,6 +385,13 @@ body {
       box-shadow: 0 0.5em 0.5em -0.4em rgba(255,255,255,0.2);
       transform: translateY(-0.25em);
     }
-
   }
+}
+.footer__copyright {
+  position: absolute;
+  display: block;
+  bottom: 30px;
+  left: 57px;
+  width: 169px;
+  height: 11px;
 }
