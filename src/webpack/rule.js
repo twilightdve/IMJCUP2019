@@ -1,5 +1,6 @@
 import 'babel-polyfill';
 import velocity from 'velocity-animate';
+import Hammer from 'hammerjs';
 
 class Index {
   constructor() {
@@ -12,16 +13,18 @@ class Index {
   }
 
   initialize() {
-    const _click = window.ontouchstart === undefined ? 'click' : 'touchstart';
-    this.$menuButton.addEventListener('click', (e) => {
+    const hammerMenuButton = new Hammer(this.$menuButton);
+    hammerMenuButton.on('tap', (e) => {
       e.preventDefault();
       this.toggleMenu();
     });
-    this.$overlay.addEventListener('click', (e) => {
+    const hammerOverlay = new Hammer(this.$overlay);
+    hammerOverlay.on('tap', (e) => {
       e.preventDefault();
       this.toggleMenu();
     });
-    this.$menuSummaryButton.addEventListener('click', (e) => {
+    const hammerSummaryButton = new Hammer(this.$menuSummaryButton);
+    hammerSummaryButton.on('tap', (e) => {
       e.preventDefault();
       this.toggleMenu();
     });
