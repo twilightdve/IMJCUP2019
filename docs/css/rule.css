@@ -278,13 +278,13 @@ body {
     width: 90px;
     height: 90px;
     -webkit-transition: background 0.3s;
-    transition: background 0.3s; }
+    transition: background 0.3s;
+    cursor: pointer; }
     @media (min-width: 751px) {
       .navi .navi__menu {
         width: 55px;
         height: 55px;
         border-radius: 50%;
-        cursor: pointer;
         margin: -15px 0 0 -15px;
         -webkit-transition: background 0.3s;
         transition: background 0.3s; }

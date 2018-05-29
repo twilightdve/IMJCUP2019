@@ -42,11 +42,11 @@ body {
     width: 90px;
     height: 90px;
     transition: background 0.3s;
+    cursor: pointer;
     @media(min-width: 751px) {
       width: 55px;
       height: 55px;
       border-radius: 50%;
-      cursor: pointer;
       margin: -15px 0 0 -15px;
       transition: background 0.3s;
       &:hover {

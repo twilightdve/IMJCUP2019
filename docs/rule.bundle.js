@@ -18137,7 +18137,6 @@ class Index {
     this.$menu = document.querySelector('.menu__main');
     this.$overlay = document.querySelector('.menu__overlay');
     this.$menuSummaryButton = document.querySelector('.menu__item__summary');
-    this.$main = document.querySelector('#main');
     this.isOpen = false;
     this.initialize();
   }
