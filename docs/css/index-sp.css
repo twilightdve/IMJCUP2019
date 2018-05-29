@@ -309,8 +309,8 @@ body {
   background: transparent;
   z-index: 5; }
   .navi .navi__menu {
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
     cursor: pointer;
     -webkit-transition: background 0.3s;
     transition: background 0.3s; }
@@ -323,8 +323,12 @@ body {
     background-repeat: no-repeat;
     background-position: center center; }
   .navi .navi__facebook {
-    width: 60px;
-    height: 60px; }
+    display: block;
+    width: 90px;
+    height: 90px;
+    background-image: url(../assets/images/facebook-sp.png);
+    background-repeat: no-repeat;
+    background-position: center center; }
 
 .kv__wrapper {
   width: 100%;

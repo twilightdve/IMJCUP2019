@@ -275,8 +275,8 @@ body {
           -ms-flex-direction: row-reverse;
               flex-direction: row-reverse; } }
   .navi .navi__menu {
-    width: 60px;
-    height: 60px; }
+    width: 90px;
+    height: 90px; }
     @media (min-width: 751px) {
       .navi .navi__menu {
         width: 55px;
@@ -303,8 +303,9 @@ body {
       .navi .navi__menu__close {
         background-image: url(../assets/images/close.png); } }
   .navi .navi__facebook {
-    width: 60px;
-    height: 60px;
+    display: block;
+    width: 90px;
+    height: 90px;
     background-image: url(../assets/images/facebook-sp.png);
     background-repeat: no-repeat;
     background-position: center center; }
