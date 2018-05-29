@@ -13,13 +13,16 @@ class Index {
 
   initialize() {
     const _click = window.ontouchstart === undefined ? 'click' : 'touchstart';
-    this.$menuButton.addEventListener(_click, () => {
+    this.$menuButton.addEventListener('click', (e) => {
+      e.preventDefault();
       this.toggleMenu();
     });
-    this.$overlay.addEventListener(_click, () => {
+    this.$overlay.addEventListener('click', (e) => {
+      e.preventDefault();
       this.toggleMenu();
     });
-    this.$menuSummaryButton.addEventListener(_click, () => {
+    this.$menuSummaryButton.addEventListener('click', (e) => {
+      e.preventDefault();
       this.toggleMenu();
     });
   }
