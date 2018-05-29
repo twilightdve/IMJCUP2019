@@ -15,7 +15,6 @@ class Index {
   initialize() {
     const hammerMenuButton = new Hammer(this.$menuButton);
     hammerMenuButton.on('tap', (e) => {
-      console.log('tapped');
       e.preventDefault();
       this.toggleMenu();
     });

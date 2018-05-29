@@ -267,7 +267,9 @@ body {
           justify-content: space-between;
   padding: 25px 30px;
   background: transparent;
-  z-index: 99; }
+  z-index: 99;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0); }
   @media (min-width: 751px) {
     .navi {
       -webkit-box-orient: horizontal;

@@ -18199,7 +18199,6 @@ class Index {
     };
     const hammerMenuButton = new hammerjs__WEBPACK_IMPORTED_MODULE_2___default.a(this.$menuButton);
     hammerMenuButton.on('tap', e => {
-      console.log('tapped');
       e.preventDefault();
       this.toggleMenu();
     });
