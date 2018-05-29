@@ -18175,6 +18175,7 @@ class Index {
       });
       this.$menuButton.classList.remove('navi__menu__line');
       this.$menuButton.classList.add('navi__menu__close');
+      this.isOpen = true;
     } else {
       velocity_animate__WEBPACK_IMPORTED_MODULE_1___default()(this.$menu, 'slideUp', {
         duration: 300,
@@ -18190,8 +18191,8 @@ class Index {
       });
       this.$menuButton.classList.remove('navi__menu__close');
       this.$menuButton.classList.add('navi__menu__line');
+      this.isOpen = false;
     }
-    this.isOpen = !this.isOpen;
   }
 }
 window.IMJCUP2018 = window.IMJCUP2018 || {};
