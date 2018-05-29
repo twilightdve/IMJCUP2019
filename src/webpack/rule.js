@@ -13,11 +13,15 @@ class Index {
   }
 
   initialize() {
-    const hammerMenuButton = new Hammer(this.$menuButton);
-    hammerMenuButton.on('tap', (e) => {
+    this.$menuButton.addEventListener('click', (e) => {
       e.preventDefault();
       this.toggleMenu();
     });
+    // const hammerMenuButton = new Hammer(this.$menuButton);
+    // hammerMenuButton.on('tap', (e) => {
+    //   e.preventDefault();
+    //   this.toggleMenu();
+    // });
     const hammerOverlay = new Hammer(this.$overlay);
     hammerOverlay.on('tap', (e) => {
       e.preventDefault();

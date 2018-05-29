@@ -18142,11 +18142,15 @@ class Index {
   }
 
   initialize() {
-    const hammerMenuButton = new hammerjs__WEBPACK_IMPORTED_MODULE_2___default.a(this.$menuButton);
-    hammerMenuButton.on('tap', e => {
+    this.$menuButton.addEventListener('click', e => {
       e.preventDefault();
       this.toggleMenu();
     });
+    // const hammerMenuButton = new Hammer(this.$menuButton);
+    // hammerMenuButton.on('tap', (e) => {
+    //   e.preventDefault();
+    //   this.toggleMenu();
+    // });
     const hammerOverlay = new hammerjs__WEBPACK_IMPORTED_MODULE_2___default.a(this.$overlay);
     hammerOverlay.on('tap', e => {
       e.preventDefault();
