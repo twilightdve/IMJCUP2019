@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IMJ CUP</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header class="header">
+      <div class="menu__overlay" style="display:none"></div>
+      <div class="menu__main" style="display:none">
+        <div class="menu__list">
+          <div class="menu__item menu__item__top"></div><a class="menu__item menu__item__summary" href="rule.html"></a>
+          <div class="menu__item menu__item__group top__selected"></div>
+          <div class="menu__item menu__item__history"></div>
+        </div>
+      </div>
+      <div class="navi"><a class="navi__facebook" href="https://www.facebook.com/events/484653471951567/" target="_blank"></a>
+        <div class="navi__menu navi__menu__line"></div>
+      </div>
+      <nav id="nav">
+        <ul ref="sections">
+          <li class="is-active" data-section="schedule" v-on:click="selectSection">対戦スケジュール</li>
+          <li data-section="league" v-on:click="selectSection">グループリーグ</li>
+          <li data-section="final" v-on:click="selectSection">決勝トーナメント</li>
+        </ul>
+      </nav>
+    </header>
+    <div class="wrap">
+      <div class="schedule" id="schedule" style="display: none;">
+        <div class="schedule-wrap">
+          <ul class="schedule-switcher" ref="indicator">
+            <li class="is-active" data-index="0">COURT A</li>
+            <li data-index="1">COURT B</li>
+            <li data-index="2">COURT C</li>
+          </ul>
+          <div class="schedule-wrap-list" ref="slick">
+            <div class="schedule-wrap-item schedule-list schedule-list--a">
+              <div class="schedule-item" v-for="game in courtAHeatGames">
+                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(11,5) }}</div>
+                <div class="schedule-content" v-bind:class="{ win1: game.result === 1, win2: game.result === 2, draw: game.result === 3, beforegame: game.result === 0 }">
+                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ game.team1 }}</div>
+                  <div class="schedule-score"><span class="schedule-score-team1">{{ game.team1Score }}</span><span class="schedule-score-team2">{{ game.team2Score }}</span></div>
+                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ game.team2 }}</div>
+                </div>
+              </div>
+              <div class="schedule-rest">10分間休憩タイム （結果集計）</div>
+              <div class="schedule-item" v-for="game in courtAFinalGames">
+                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(11,5) }}</div>
+                <div class="schedule-content" v-bind:class="{ win1: game.result === 1, win2: game.result === 2, draw: game.result === 3, beforegame: game.result === 0 }">
+                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ game.team1 }}</div>
+                  <div class="schedule-score"><span class="schedule-score-team1">{{ game.team1Score }}</span><span class="schedule-score-team2">{{ game.team2Score }}</span></div>
+                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ game.team2 }}</div>
+                </div>
+              </div>
+              <div class="schedule-closing">
+                <p class="schedule-closing__heikaishiki">15:30〜　閉会式</p>
+                <!--ul-->
+                <!--  li 15:30〜　閉会式-->
+                <!--  li 14:40〜　全体集合写真-->
+                <!--  li 15:00　　完全撤収-->
+                <!--a(href="https://m.facebook.com/events/1564993586864206?view=permalink&id=1613148778715353", target="_blank") 打ち上げについてはこちら-->
+              </div>
+            </div>
+            <div class="schedule-wrap-item schedule-list schedule-list--b">
+              <div class="schedule-item" v-for="game in courtBHeatGames">
+                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(11,5) }}</div>
+                <div class="schedule-content" v-bind:class="{ win1: game.result === 1, win2: game.result === 2, draw: game.result === 3, beforegame: game.result === 0 }">
+                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ game.team1 }}</div>
+                  <div class="schedule-score"><span class="schedule-score-team1">{{ game.team1Score }}</span><span class="schedule-score-team2">{{ game.team2Score }}</span></div>
+                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ game.team2 }}</div>
+                </div>
+              </div>
+              <div class="schedule-rest">10分間休憩タイム （結果集計）</div>
+              <div class="schedule-item" v-for="game in courtBFinalGames">
+                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(11,5) }}</div>
+                <div class="schedule-content" v-bind:class="{ win1: game.result === 1, win2: game.result === 2, draw: game.result === 3, beforegame: game.result === 0 }">
+                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ game.team1 }}</div>
+                  <div class="schedule-score"><span class="schedule-score-team1">{{ game.team1Score }}</span><span class="schedule-score-team2">{{ game.team2Score }}</span></div>
+                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ game.team2 }}</div>
+                </div>
+              </div>
+              <div class="schedule-closing">
+                <p class="schedule-closing__heikaishiki">15:30〜　閉会式</p>
+                <!--ul-->
+                <!--  li 15:30〜　閉会式-->
+                <!--  li 14:40〜　全体集合写真-->
+                <!--  li 15:00　　完全撤収-->
+                <!--a(href="https://m.facebook.com/events/1564993586864206?view=permalink&id=1613148778715353", target="_blank") 打ち上げについてはこちら-->
+              </div>
+            </div>
+            <div class="schedule-wrap-item schedule-list schedule-list--c">
+              <div class="schedule-item" v-for="game in courtCHeatGames">
+                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(11,5) }}</div>
+                <div class="schedule-content" v-bind:class="{ win1: game.result === 1, win2: game.result === 2, draw: game.result === 3, beforegame: game.result === 0 }">
+                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ game.team1 }}</div>
+                  <div class="schedule-score"><span class="schedule-score-team1">{{ game.team1Score }}</span><span class="schedule-score-team2">{{ game.team2Score }}</span></div>
+                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ game.team2 }}</div>
+                </div>
+              </div>
+              <div class="schedule-rest">10分間休憩タイム （結果集計）</div>
+              <div class="schedule-item" v-for="game in courtCFinalGames">
+                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(11,5) }}</div>
+                <div class="schedule-content" v-bind:class="{ win1: game.result === 1, win2: game.result === 2, draw: game.result === 3, beforegame: game.result === 0 }">
+                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ game.team1 }}</div>
+                  <div class="schedule-score"><span class="schedule-score-team1">{{ game.team1Score }}</span><span class="schedule-score-team2">{{ game.team2Score }}</span></div>
+                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ game.team2 }}</div>
+                </div>
+              </div>
+              <div class="schedule-closing">
+                <p class="schedule-closing__heikaishiki">15:30〜　閉会式</p>
+                <!--ul-->
+                <!--  li 14:25〜　閉会式-->
+                <!--  li 14:40〜　全体集合写真-->
+                <!--  li 15:00　　完全撤収-->
+                <!--a(href="https://m.facebook.com/events/1564993586864206?view=permalink&id=1613148778715353", target="_blank") 打ち上げについてはこちら-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="league" id="league" style="display: none;">
+        <div class="league-wrap">
+          <h2 class="league-heading">GROUP<span class="group">A</span></h2>
+          <div class="league-wrap-item league-table">
+            <div class="league-table-header">
+              <div class="league-table-cell">チーム名</div>
+              <div class="league-table-cell">勝点</div>
+              <div class="league-table-cell">勝</div>
+              <div class="league-table-cell">負</div>
+              <div class="league-table-cell">引</div>
+              <div class="league-table-cell">得失</div>
+              <div class="league-table-cell">得点</div>
+              <div class="league-table-cell">失点</div>
+              <div class="league-table-cell">試</div>
+            </div>
+            <div class="league-table-row" v-for="team in groupATeams">
+              <div class="league-table-cell" v-bind:style="{ borderColor: team.color }">{{team.name}}</div>
+              <div class="league-table-cell">{{team.points}}</div>
+              <div class="league-table-cell">{{team.win}}</div>
+              <div class="league-table-cell">{{team.lose}}</div>
+              <div class="league-table-cell">{{team.draw}}</div>
+              <div class="league-table-cell">{{team.goalDiff}}</div>
+              <div class="league-table-cell">{{team.goals}}</div>
+              <div class="league-table-cell">{{team.goalsAgainst}}</div>
+              <div class="league-table-cell">{{team.game}}</div>
+            </div>
+          </div>
+          <h2 class="league-heading">GROUP<span class="group">B</span></h2>
+          <div class="league-wrap-item league-table">
+            <div class="league-table-header">
+              <div class="league-table-cell">チーム名</div>
+              <div class="league-table-cell">勝点</div>
+              <div class="league-table-cell">勝</div>
+              <div class="league-table-cell">負</div>
+              <div class="league-table-cell">引</div>
+              <div class="league-table-cell">得失</div>
+              <div class="league-table-cell">得点</div>
+              <div class="league-table-cell">失点</div>
+              <div class="league-table-cell">試</div>
+            </div>
+            <div class="league-table-row" v-for="team in groupBTeams">
+              <div class="league-table-cell" v-bind:style="{ borderColor: team.color }">{{team.name}}</div>
+              <div class="league-table-cell">{{team.points}}</div>
+              <div class="league-table-cell">{{team.win}}</div>
+              <div class="league-table-cell">{{team.lose}}</div>
+              <div class="league-table-cell">{{team.draw}}</div>
+              <div class="league-table-cell">{{team.goalDiff}}</div>
+              <div class="league-table-cell">{{team.goals}}</div>
+              <div class="league-table-cell">{{team.goalsAgainst}}</div>
+              <div class="league-table-cell">{{team.game}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="final" id="final">
+        <div class="final-wrap">
+          <ul class="final-switcher">
+            <li data-index="0" :class="{'is-active': isUpper}" @click="isUpper = true">上位トーナメント</li>
+            <li data-index="1" :class="{'is-active': !isUpper}" @click="isUpper = false">下位トーナメント</li>
+            <!--li(data-index="2") 下位リーグ-->
+          </ul>
+          <div class="final-wrap-list">
+            <!-- 上位トーナメント-->
+            <div class="final-wrap-item" v-show="isUpper">
+              <div class="upper-tournament__wrapper">
+                <div class="upper-tournament" v-if="upperResults">
+                  <div class="upper-tournament__column upper-tournament__ikkaisen">
+                    <div class="upper-tournament__item upper-tournament__item--1" v-bind:style="{ borderColor: upperTeams[0].color }">
+                      <div class="final-team">{{upperTeams[0].name}}</div>
+                    </div>
+                    <div class="upper-tournament__ikkaisen__battle" v-bind:class="{ win1: upperResults[0].result === 1, win2: upperResults[0].result === 2}">
+                      <div class="upper-tournament__item" v-bind:style="{ borderColor: upperTeams[1].color }">
+                        <div class="final-team">{{upperTeams[1].name}}</div>
+                      </div>
+                      <div class="upper-tournament__item" v-bind:style="{ borderColor: upperTeams[2].color }">
+                        <div class="final-team">{{upperTeams[2].name}}</div>
+                      </div>
+                    </div>
+                    <div class="upper-tournament__ikkaisen__battle" v-bind:class="{ win1: upperResults[1].result === 1, win2: upperResults[1].result === 2}">
+                      <div class="upper-tournament__item" v-bind:style="{ borderColor: upperTeams[3].color }">
+                        <div class="final-team">{{upperTeams[3].name}}</div>
+                      </div>
+                      <div class="upper-tournament__item" v-bind:style="{ borderColor: upperTeams[4].color }">
+                        <div class="final-team">{{upperTeams[4].name}}</div>
+                      </div>
+                    </div>
+                    <div class="upper-tournament__item upper-tournament__item--6" v-bind:style="{ borderColor: upperTeams[5].color }">
+                      <div class="final-team">{{upperTeams[5].name}}</div>
+                    </div>
+                  </div>
+                  <div class="upper-tournament__column upper-tournament__nikaisen">
+                    <div class="upper-tournament__nikaisen__battle" v-bind:class="{ win1: upperResults[2].result === 1, win2: upperResults[2].result === 2}">
+                      <div class="upper-tournament__item" v-bind:style="{ borderColor: upperTeams[6].color }">
+                        <div class="final-team">{{upperTeams[6].name}}</div>
+                      </div>
+                    </div>
+                    <div class="upper-tournament__nikaisen__battle upper-tournament__nikaisen__battle--2" v-bind:class="{ win1: upperResults[3].result === 1, win2: upperResults[3].result === 2}">
+                      <div class="upper-tournament__item upper-tournament__item--team2" v-bind:style="{ borderColor: upperTeams[7].color }">
+                        <div class="final-team">{{upperTeams[7].name}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="upper-tournament__column upper-tournament__final">
+                    <div class="upper-tournament__final__battle" v-bind:class="{ win1: upperResults[4].result === 1, win2: upperResults[4].result === 2}">
+                      <div class="upper-tournament__item" v-bind:style="{ borderColor: upperTeams[8].color }">
+                        <div class="final-team">{{upperTeams[8].name}}</div>
+                      </div>
+                      <div class="upper-tournament__item upper-tournament__item--team2" v-bind:style="{ borderColor: upperTeams[9].color }">
+                        <div class="final-team">{{upperTeams[9].name}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="upper-tournament__column upper-tournament__winner">
+                    <div class="upper-tournament__item upper-tournament__item--winner" v-bind:style="{ borderColor: upperTeams[10].color }">
+                      <div class="final-team">{{upperTeams[10].name}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--.final-wrap-item(v-show="isUpper")-->
+            <!--  .final-tournament(v-if="upperResults", v-bind:class="{ win1: upperResults[3].result === 1, win2: upperResults[3].result === 2}")-->
+            <!--    .final-tournament-top(v-bind:class="{ win1: upperResults[0].result === 1, win2: upperResults[0].result === 2}")-->
+            <!--      .final-tournament-item-->
+            <!--        .final-team(v-bind:style="{ borderColor: upperTeams[0].color }") {{upperTeams[0].name}}-->
+            <!--        span.final-score {{upperResults[0].team1Score}}-->
+            <!--      .final-tournament-item-->
+            <!--        .final-team(v-bind:style="{ borderColor: upperTeams[1].color }") {{upperTeams[1].name}}-->
+            <!--        span.final-score {{upperResults[0].team2Score}}-->
+            <!--      span.final-score {{upperResults[3].team1Score}}-->
+            <!---->
+            <!--    .final-tournament-middle(v-bind:class="{ win1: upperResults[2].result === 1, win2: upperResults[2].result === 2}")-->
+            <!--      .final-tournament-middle-top-->
+            <!--        span.final-score {{upperResults[2].team1Score}}-->
+            <!--      .final-tournament-middle-bottom-->
+            <!--        span.final-score {{upperResults[2].team2Score}}-->
+            <!---->
+            <!--    .final-tournament-bottom(v-bind:class="{ win1: upperResults[1].result === 1, win2: upperResults[1].result === 2}")-->
+            <!--      .final-tournament-item-->
+            <!--        .final-team(v-bind:style="{ borderColor: upperTeams[2].color }") {{upperTeams[2].name}}-->
+            <!--        span.final-score {{upperResults[1].team1Score}}-->
+            <!--      .final-tournament-item-->
+            <!--        .final-team(v-bind:style="{ borderColor: upperTeams[3].color }") {{upperTeams[3].name}}-->
+            <!--        span.final-score {{upperResults[1].team2Score}}-->
+            <!--      span.final-score {{upperResults[3].team2Score}}-->
+            <!-- 下位トーナメント-->
+            <div class="final-wrap-item" v-show="!isUpper">
+              <div class="upper-tournament__wrapper">
+                <div class="lower-tournament" v-if="upperResults">
+                  <div class="lower-tournament__column lower-tournament__ikkaisen">
+                    <div class="lower-tournament__ikkaisen__battle" v-bind:class="{ win1: lowerResults[0].result === 1, win2: lowerResults[0].result === 2}">
+                      <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[0].color }">
+                        <div class="final-team">{{lowerTeams[0].name}}</div>
+                      </div>
+                      <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[1].color }">
+                        <div class="final-team">{{lowerTeams[1].name}}</div>
+                      </div>
+                    </div>
+                    <div class="lower-tournament__ikkaisen__battle" v-bind:class="{ win1: lowerResults[1].result === 1, win2: lowerResults[1].result === 2}">
+                      <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[2].color }">
+                        <div class="final-team">{{lowerTeams[2].name}}</div>
+                      </div>
+                      <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[3].color }">
+                        <div class="final-team">{{lowerTeams[3].name}}</div>
+                      </div>
+                    </div>
+                    <div class="lower-tournament__ikkaisen__battle" v-bind:class="{ win1: lowerResults[2].result === 1, win2: lowerResults[2].result === 2}">
+                      <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[4].color }">
+                        <div class="final-team">{{lowerTeams[4].name}}</div>
+                      </div>
+                      <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[5].color }">
+                        <div class="final-team">{{lowerTeams[5].name}}</div>
+                      </div>
+                    </div>
+                    <div class="lower-tournament__ikkaisen__battle" v-bind:class="{ win1: lowerResults[3].result === 1, win2: lowerResults[3].result === 2}">
+                      <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[6].color }">
+                        <div class="final-team">{{lowerTeams[6].name}}</div>
+                      </div>
+                      <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[7].color }">
+                        <div class="final-team">{{lowerTeams[7].name}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lower-tournament__column lower-tournament__nikaisen">
+                    <div class="lower-tournament__nikaisen__battle" v-bind:class="{ win1: lowerResults[4].result === 1, win2: lowerResults[4].result === 2}">
+                      <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[8].color }">
+                        <div class="final-team">{{lowerTeams[8].name}}</div>
+                      </div>
+                      <div class="lower-tournament__item lower-tournament__item--team2" v-bind:style="{ borderColor: lowerTeams[9].color }">
+                        <div class="final-team">{{lowerTeams[9].name}}</div>
+                      </div>
+                    </div>
+                    <div class="lower-tournament__nikaisen__battle lower-tournament__nikaisen__battle--2" v-bind:class="{ win1: lowerResults[5].result === 1, win2: lowerResults[5].result === 2}">
+                      <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[10].color }">
+                        <div class="final-team">{{lowerTeams[10].name}}</div>
+                      </div>
+                      <div class="lower-tournament__item lower-tournament__item--team2" v-bind:style="{ borderColor: lowerTeams[11].color }">
+                        <div class="final-team">{{lowerTeams[11].name}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lower-tournament__column lower-tournament__final">
+                    <div class="lower-tournament__final__battle" v-bind:class="{ win1: lowerResults[6].result === 1, win2: lowerResults[6].result === 2}">
+                      <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[12].color }">
+                        <div class="final-team">{{lowerTeams[12].name}}</div>
+                      </div>
+                      <div class="lower-tournament__item lower-tournament__item--team2" v-bind:style="{ borderColor: lowerTeams[13].color }">
+                        <div class="final-team">{{lowerTeams[13].name}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lower-tournament__column lower-tournament__winner">
+                    <div class="lower-tournament__item lower-tournament__item--winner" v-bind:style="{ borderColor: lowerTeams[14].color }">
+                      <div class="final-team">{{lowerTeams[14].name}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--.final-tournament.middle-tournament(v-if="middleResults", v-bind:class="{ win1: middleResults[3].result === 1, win2: middleResults[3].result === 2}")-->
+              <!--  .final-tournament-top(v-bind:class="{ win1: middleResults[0].result === 1, win2: middleResults[0].result === 2}")-->
+              <!--    .final-tournament-item-->
+              <!--      .final-team(v-bind:style="{ borderColor: middleTeams[0].color }") {{middleTeams[0].name}}-->
+              <!--      span.final-score {{middleResults[0].team1Score}}-->
+              <!--    .final-tournament-item-->
+              <!--      .final-team(v-bind:style="{ borderColor: middleTeams[1].color }") {{middleTeams[1].name}}-->
+              <!--      span.final-score {{middleResults[0].team2Score}}-->
+              <!--    span.final-score {{middleResults[3].team1Score}}-->
+              <!---->
+              <!--  .final-tournament-middle.middle-tournament(v-bind:class="{ win1: middleResults[2].result === 1, win2: middleResults[2].result === 2}")-->
+              <!--    .final-tournament-middle-top-->
+              <!--      span.final-score {{middleResults[2].team1Score}}-->
+              <!--    .final-tournament-middle-bottom-->
+              <!--      span.final-score {{middleResults[2].team2Score}}-->
+              <!---->
+              <!--  .final-tournament-bottom(v-bind:class="{ win1: middleResults[1].result === 1, win2: middleResults[1].result === 2}")-->
+              <!--    .final-tournament-item-->
+              <!--      .final-team(v-bind:style="{ borderColor: middleTeams[2].color }") {{middleTeams[2].name}}-->
+              <!--      span.final-score {{middleResults[1].team1Score}}-->
+              <!--    .final-tournament-item-->
+              <!--      .final-team(v-bind:style="{ borderColor: middleTeams[3].color }") {{middleTeams[3].name}}-->
+              <!--      span.final-score {{middleResults[1].team2Score}}-->
+              <!--    span.final-score {{middleResults[3].team2Score}}-->
+            </div>
+            <!--.final-wrap-item-->
+            <!--  .schedule-list-->
+            <!--    .schedule-item(v-for="game in lowerGames")-->
+            <!--      .schedule-content(v-bind:class="{ win1: game.result === 1, win2: game.result === 2, " + "draw: game.result === 3, beforegame: game.result === 0 }")-->
+            <!--        .schedule-team1(v-bind:style="{ borderColor: game.team1Color }") {{ game.team1 }}-->
+            <!--        .schedule-score-->
+            <!--          span.schedule-score-team1 {{ game.team1Score }}-->
+            <!--          span.schedule-score-team2 {{ game.team2Score }}-->
+            <!--        .schedule-team2(v-bind:style="{ borderColor: game.team2Color }") {{ game.team2 }}-->
+            <!---->
+            <!--  .league-table(v-if="lowerTeams")-->
+            <!--    .league-table-header-->
+            <!--      .league-table-cell チーム名-->
+            <!--      .league-table-cell 勝点-->
+            <!--      .league-table-cell 勝-->
+            <!--      .league-table-cell 負-->
+            <!--      .league-table-cell 引-->
+            <!--      .league-table-cell 得失-->
+            <!--      .league-table-cell 得点-->
+            <!--      .league-table-cell 失点-->
+            <!--      .league-table-cell 試-->
+            <!--    .league-table-row(v-for="team in lowerTeams")-->
+            <!--      .league-table-cell(v-bind:style="{ borderColor: team.color }") {{team.name}}-->
+            <!--      .league-table-cell {{team.points}}-->
+            <!--      .league-table-cell {{team.win}}-->
+            <!--      .league-table-cell {{team.lose}}-->
+            <!--      .league-table-cell {{team.draw}}-->
+            <!--      .league-table-cell {{team.goalDiff}}-->
+            <!--      .league-table-cell {{team.goals}}-->
+            <!--      .league-table-cell {{team.goalsAgainst}}-->
+            <!--      .league-table-cell {{team.game}}-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/app.js"></script>
+  </body>
+</html>
