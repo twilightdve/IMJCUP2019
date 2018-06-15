@@ -29442,7 +29442,7 @@ window.IMJCUP2018.INDEX = window.IMJCUP2018.INDEX || new _index2.default();
  * APIのエンドポイント
  */
 // const endPoint = '/json/';
-var endPoint = 'http://twilightea.jp/api/';
+var endPoint = 'https://twilightea.jp/api/';
 //----------------------------------------------------------------------------
 
 /**
