@@ -10,10 +10,8 @@
     <header class="header">
       <div class="menu__overlay" style="display:none"></div>
       <div class="menu__main" style="display:none">
-        <div class="menu__list">
-          <div class="menu__item menu__item__top"></div><a class="menu__item menu__item__summary" href="rule.html"></a>
+        <div class="menu__list"><a class="menu__item menu__item__top menu__item--active" href="../index.html"></a><a class="menu__item menu__item__summary menu__item--active" href="../rule.html"></a>
           <div class="menu__item menu__item__group top__selected"></div>
-          <div class="menu__item menu__item__history"></div>
         </div>
       </div>
       <div class="navi"><a class="navi__facebook" href="https://www.facebook.com/events/484653471951567/" target="_blank"></a>
@@ -38,20 +36,20 @@
           <div class="schedule-wrap-list" ref="slick">
             <div class="schedule-wrap-item schedule-list schedule-list--a">
               <div class="schedule-item" v-for="game in courtAHeatGames">
-                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(11,5) }}</div>
+                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(17,5) }}</div>
                 <div class="schedule-content" v-bind:class="{ win1: game.result === 1, win2: game.result === 2, draw: game.result === 3, beforegame: game.result === 0 }">
-                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ game.team1 }}</div>
+                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ unescape(game.team1) }}</div>
                   <div class="schedule-score"><span class="schedule-score-team1">{{ game.team1Score }}</span><span class="schedule-score-team2">{{ game.team2Score }}</span></div>
-                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ game.team2 }}</div>
+                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ unescape(game.team2) }}</div>
                 </div>
               </div>
               <div class="schedule-rest">10分間休憩タイム （結果集計）</div>
               <div class="schedule-item" v-for="game in courtAFinalGames">
-                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(11,5) }}</div>
+                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(17,5) }}</div>
                 <div class="schedule-content" v-bind:class="{ win1: game.result === 1, win2: game.result === 2, draw: game.result === 3, beforegame: game.result === 0 }">
-                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ game.team1 }}</div>
+                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ unescape(game.team1) }}</div>
                   <div class="schedule-score"><span class="schedule-score-team1">{{ game.team1Score }}</span><span class="schedule-score-team2">{{ game.team2Score }}</span></div>
-                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ game.team2 }}</div>
+                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ unescape(game.team2) }}</div>
                 </div>
               </div>
               <div class="schedule-closing">
@@ -65,20 +63,20 @@
             </div>
             <div class="schedule-wrap-item schedule-list schedule-list--b">
               <div class="schedule-item" v-for="game in courtBHeatGames">
-                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(11,5) }}</div>
+                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(17,5) }}</div>
                 <div class="schedule-content" v-bind:class="{ win1: game.result === 1, win2: game.result === 2, draw: game.result === 3, beforegame: game.result === 0 }">
-                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ game.team1 }}</div>
+                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ unescape(game.team1) }}</div>
                   <div class="schedule-score"><span class="schedule-score-team1">{{ game.team1Score }}</span><span class="schedule-score-team2">{{ game.team2Score }}</span></div>
-                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ game.team2 }}</div>
+                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ unescape(game.team2) }}</div>
                 </div>
               </div>
               <div class="schedule-rest">10分間休憩タイム （結果集計）</div>
               <div class="schedule-item" v-for="game in courtBFinalGames">
-                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(11,5) }}</div>
+                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(17,5) }}</div>
                 <div class="schedule-content" v-bind:class="{ win1: game.result === 1, win2: game.result === 2, draw: game.result === 3, beforegame: game.result === 0 }">
-                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ game.team1 }}</div>
+                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ unescape(game.team1) }}</div>
                   <div class="schedule-score"><span class="schedule-score-team1">{{ game.team1Score }}</span><span class="schedule-score-team2">{{ game.team2Score }}</span></div>
-                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ game.team2 }}</div>
+                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ unescape(game.team2) }}</div>
                 </div>
               </div>
               <div class="schedule-closing">
@@ -92,20 +90,20 @@
             </div>
             <div class="schedule-wrap-item schedule-list schedule-list--c">
               <div class="schedule-item" v-for="game in courtCHeatGames">
-                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(11,5) }}</div>
+                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(17,5) }}</div>
                 <div class="schedule-content" v-bind:class="{ win1: game.result === 1, win2: game.result === 2, draw: game.result === 3, beforegame: game.result === 0 }">
-                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ game.team1 }}</div>
+                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ unescape(game.team1) }}</div>
                   <div class="schedule-score"><span class="schedule-score-team1">{{ game.team1Score }}</span><span class="schedule-score-team2">{{ game.team2Score }}</span></div>
-                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ game.team2 }}</div>
+                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ unescape(game.team2) }}</div>
                 </div>
               </div>
               <div class="schedule-rest">10分間休憩タイム （結果集計）</div>
               <div class="schedule-item" v-for="game in courtCFinalGames">
-                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(11,5) }}</div>
+                <div class="schedule-time" v-bind:class="{ nextgame: game.isNext }">{{ game.time.substr(17,5) }}</div>
                 <div class="schedule-content" v-bind:class="{ win1: game.result === 1, win2: game.result === 2, draw: game.result === 3, beforegame: game.result === 0 }">
-                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ game.team1 }}</div>
+                  <div class="schedule-team1" v-bind:style="{ borderColor: game.team1Color }">{{ unescape(game.team1) }}</div>
                   <div class="schedule-score"><span class="schedule-score-team1">{{ game.team1Score }}</span><span class="schedule-score-team2">{{ game.team2Score }}</span></div>
-                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ game.team2 }}</div>
+                  <div class="schedule-team2" v-bind:style="{ borderColor: game.team2Color }">{{ unescape(game.team2) }}</div>
                 </div>
               </div>
               <div class="schedule-closing">

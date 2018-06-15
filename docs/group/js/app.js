@@ -10778,56 +10778,6 @@ var Index = function () {
     value: function initialize() {
       var _this = this;
 
-      window.onload = function () {
-        (0, _velocityAnimate2.default)(_this.$kvAnniversary, {
-          opacity: [1, 0],
-          translateY: [0, 50]
-          // rotateY: [0, '360deg']
-        }, {
-          duration: 1000,
-          delay: 300,
-          easing: 'easeOutCubic',
-          display: 'block',
-          complete: function complete() {
-            (0, _velocityAnimate2.default)(_this.$kvTitle, {
-              opacity: [1, 0],
-              rotateY: [0, '90deg']
-            }, {
-              duration: 800,
-              easing: 'easeOutSine',
-              display: 'block',
-              complete: function complete() {
-                (0, _velocityAnimate2.default)(_this.$kvDate, {
-                  opacity: [1, 0]
-                }, {
-                  duration: 300,
-                  easing: 'easeOutCubic',
-                  display: 'block',
-                  complete: function complete() {
-                    (0, _velocityAnimate2.default)([_this.$kvScroll, _this.$pcText], {
-                      opacity: [1, 0]
-                    }, {
-                      duration: 500,
-                      delay: 500,
-                      easing: 'easeOutCubic',
-                      display: 'block',
-                      complete: function complete() {
-                        (0, _velocityAnimate2.default)(_this.$kvScroll, {
-                          translateY: [15, 0]
-                        }, {
-                          duration: 700,
-                          easing: 'easeInOutSine',
-                          loop: true
-                        });
-                      }
-                    });
-                  }
-                });
-              }
-            });
-          }
-        });
-      };
       var hammerMenuButton = new _hammerjs2.default(this.$menuButton);
       hammerMenuButton.on('tap', function (e) {
         e.preventDefault();
@@ -29858,47 +29808,46 @@ _superagent2.default.get(store.api.schedule).use(_superagentJsonp2.default).end(
      * 現在の時刻から一番近い次の試合時間のビューを変更する必要があるため、
      * スケジュールのデータをループし、次の試合時間のオブジェクトにisNextプロパティを追加する
      */
-    // const date = new Date();
-    // const year = date.getFullYear();
-    // const month = date.getMonth() + 1;
-    // const day = date.getDate();
-    // const hours = date.getHours();
-    // const minutes = date.getMinutes();
-    // let time = [];
-    // let gameHours = 0;
-    // let gameMinutes = 0;
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var time = [];
+    var gameHours = 0;
+    var gameMinutes = 0;
+
+    _lodash2.default.each(schedule.leagueA, function (game, index) {
+      time = game.time.substr(11, 5).split(':');
+      gameHours = parseInt(time[0], 10);
+      gameMinutes = parseInt(time[1], 10);
+
+      if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
+        schedule.leagueA[index - 1].isNext = true;
+        return false;
+      }
+    });
     //
-    // _.each(schedule.courtA, (game, index) => {
-    //   time = game.time.split(':');
+    _lodash2.default.each(schedule.leagueB, function (game, index) {
+      time = game.time.substr(11, 5).split(':');
+      gameHours = parseInt(time[0], 10);
+      gameMinutes = parseInt(time[1], 10);
+
+      if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
+        schedule.leagueB[index - 1].isNext = true;
+        return false;
+      }
+    });
+
+    // 平野追加
+    // _.each(schedule.leagueB, (game, index) => {
+    //   time = game.time.substr(11,5).split(':');
     //   gameHours = parseInt(time[0], 10);
     //   gameMinutes = parseInt(time[1], 10);
     //
     //   if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
-    //     schedule.courtA[index - 1].isNext = true;
-    //     return false;
-    //   }
-    // });
-    //
-    // _.each(schedule.courtB, (game, index) => {
-    // _.each(schedule.courtB, (game, index) => {
-    //   time = game.time.split(':');
-    //   gameHours = parseInt(time[0], 10);
-    //   gameMinutes = parseInt(time[1], 10);
-    //
-    //   if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
-    //     schedule.courtB[index - 1].isNext = true;
-    //     return false;
-    //   }
-    // });
-    //
-    // // 平野追加
-    // _.each(schedule.courtC, (game, index) => {
-    //   time = game.time.split(':');
-    //   gameHours = parseInt(time[0], 10);
-    //   gameMinutes = parseInt(time[1], 10);
-    //
-    //   if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
-    //     schedule.courtC[index - 1].isNext = true;
+    //     schedule.leagueB[index - 1].isNext = true;
     //     return false;
     //   }
     // });
