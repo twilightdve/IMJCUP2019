@@ -134,7 +134,7 @@
               <div class="league-table-cell">試</div>
             </div>
             <div class="league-table-row" v-for="team in groupATeams">
-              <div class="league-table-cell" v-bind:style="{ borderColor: team.color }">{{team.name}}</div>
+              <div class="league-table-cell" v-bind:style="{ borderColor: team.color }">{{unescape(team.name)}}</div>
               <div class="league-table-cell">{{team.points}}</div>
               <div class="league-table-cell">{{team.win}}</div>
               <div class="league-table-cell">{{team.lose}}</div>
@@ -159,7 +159,7 @@
               <div class="league-table-cell">試</div>
             </div>
             <div class="league-table-row" v-for="team in groupBTeams">
-              <div class="league-table-cell" v-bind:style="{ borderColor: team.color }">{{team.name}}</div>
+              <div class="league-table-cell" v-bind:style="{ borderColor: team.color }">{{unescape(team.name)}}</div>
               <div class="league-table-cell">{{team.points}}</div>
               <div class="league-table-cell">{{team.win}}</div>
               <div class="league-table-cell">{{team.lose}}</div>
