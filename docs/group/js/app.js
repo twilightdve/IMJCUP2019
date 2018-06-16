@@ -29539,11 +29539,10 @@ var schedule = new _vue2.default({
         /**
          * 予選試合
          */
-        this.$data.courtAHeatGames = store.data.schedule.leagueA.slice(0, heatGamesIndexA);
-        this.$data.courtBHeatGames = store.data.schedule.leagueB.slice(0, heatGamesIndexB);
+        this.$data.courtAHeatGames = store.data.schedule.courtA.schedule.slice(0, heatGamesIndexA);
+        this.$data.courtBHeatGames = store.data.schedule.courtB.schedule.slice(0, heatGamesIndexB);
         // 平野追加
-        this.$data.courtCHeatGames = store.data.schedule.leagueB.slice(0, heatGamesIndexC);
-
+        this.$data.courtCHeatGames = store.data.schedule.courtC.schedule.slice(0, heatGamesIndexC);
         /**
          * 決勝試合
          */
@@ -29573,7 +29572,7 @@ var schedule = new _vue2.default({
         //   team2: 'B1位-A2位の勝者',
         //   time: '13:55'
         // }];
-        this.$data.courtAFinalGames = store.data.schedule.leagueA.slice(heatGamesIndexA, store.data.schedule.leagueA.length);
+        this.$data.courtAFinalGames = store.data.schedule.courtA.schedule.slice(heatGamesIndexA, store.data.schedule.courtA.length);
         // this.$data.courtAFinalGames.forEach((value, index) => {
         //   this.$data.courtAFinalGames[index].team1 = finalATeam[index].team1;
         //   this.$data.courtAFinalGames[index].team2 = finalATeam[index].team2;
@@ -29611,7 +29610,7 @@ var schedule = new _vue2.default({
         //     time: '13:55'
         //   }
         // ];
-        this.$data.courtBFinalGames = store.data.schedule.leagueB.slice(heatGamesIndexB, store.data.schedule.leagueB.length);
+        this.$data.courtBFinalGames = store.data.schedule.courtB.schedule.slice(heatGamesIndexB, store.data.schedule.courtB.length);
         // this.$data.courtBFinalGames.forEach((value, index) => {
         //   this.$data.courtBFinalGames[index].team1 = finalBTeam[index].team1;
         //   this.$data.courtBFinalGames[index].team2 = finalBTeam[index].team2;
@@ -29650,7 +29649,7 @@ var schedule = new _vue2.default({
         //     time: '13:55'
         //   }
         // ];
-        this.$data.courtCFinalGames = store.data.schedule.leagueB.slice(heatGamesIndexC, store.data.schedule.leagueB.length);
+        this.$data.courtCFinalGames = store.data.schedule.courtC.schedule.slice(heatGamesIndexC, store.data.schedule.courtC.length);
         // this.$data.courtCFinalGames.forEach((value, index) => {
         //   this.$data.courtCFinalGames[index].team1 = finalCTeam[index].team1;
         //   this.$data.courtCFinalGames[index].team2 = finalCTeam[index].team2;
@@ -29818,39 +29817,39 @@ _superagent2.default.get(store.api.schedule).use(_superagentJsonp2.default).end(
     var gameHours = 0;
     var gameMinutes = 0;
 
-    _lodash2.default.each(schedule.leagueA, function (game, index) {
+    _lodash2.default.each(schedule.courtA.schedule, function (game, index) {
       time = game.time.substr(11, 5).split(':');
       gameHours = parseInt(time[0], 10);
       gameMinutes = parseInt(time[1], 10);
 
       if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
-        schedule.leagueA[index - 1].isNext = true;
+        schedule.courtA[index - 1].isNext = true;
         return false;
       }
     });
     //
-    _lodash2.default.each(schedule.leagueB, function (game, index) {
+    _lodash2.default.each(schedule.courtB.schedule, function (game, index) {
       time = game.time.substr(11, 5).split(':');
       gameHours = parseInt(time[0], 10);
       gameMinutes = parseInt(time[1], 10);
 
       if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
-        schedule.leagueB[index - 1].isNext = true;
+        schedule.courtB[index - 1].isNext = true;
         return false;
       }
     });
 
     // 平野追加
-    // _.each(schedule.leagueB, (game, index) => {
-    //   time = game.time.substr(11,5).split(':');
-    //   gameHours = parseInt(time[0], 10);
-    //   gameMinutes = parseInt(time[1], 10);
-    //
-    //   if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
-    //     schedule.leagueB[index - 1].isNext = true;
-    //     return false;
-    //   }
-    // });
+    _lodash2.default.each(schedule.courtC.schedule, function (game, index) {
+      time = game.time.substr(11, 5).split(':');
+      gameHours = parseInt(time[0], 10);
+      gameMinutes = parseInt(time[1], 10);
+
+      if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
+        schedule.courtC[index - 1].isNext = true;
+        return false;
+      }
+    });
 
     EventBus.$emit('schedule:update', schedule);
   };
