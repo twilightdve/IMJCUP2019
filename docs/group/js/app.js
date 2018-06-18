@@ -10762,12 +10762,6 @@ var Index = function () {
     this.$menuButton = document.querySelector('.navi__menu');
     this.$menu = document.querySelector('.menu__main');
     this.$overlay = document.querySelector('.menu__overlay');
-    this.$menuTopButton = document.querySelector('.menu__item__top');
-    this.$kvAnniversary = document.querySelector('.kv__anniversary');
-    this.$kvTitle = document.querySelector('.kv__title');
-    this.$kvDate = document.querySelector('.kv__date');
-    this.$kvScroll = document.querySelector('.kv__scrolldown');
-    this.$pcText = document.querySelector('.js-pctext');
     this.$navi = document.querySelector('.navi');
     this.isOpen = false;
     this.initialize();
@@ -10785,11 +10779,6 @@ var Index = function () {
       });
       var hammerOverlay = new _hammerjs2.default(this.$overlay);
       hammerOverlay.on('tap', function (e) {
-        e.preventDefault();
-        _this.toggleMenu();
-      });
-      var hammerTopButton = new _hammerjs2.default(this.$menuTopButton);
-      hammerTopButton.on('tap', function (e) {
         e.preventDefault();
         _this.toggleMenu();
       });
