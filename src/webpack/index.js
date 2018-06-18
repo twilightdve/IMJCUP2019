@@ -23,6 +23,9 @@ class Index {
 
   initialize() {
     window.onload = () => {
+      for (let i = 0; i < this.$teamModals.length; ++i) {
+        this.$teamModals[i].style.display = 'block';
+      }
       velocity(
         this.$kvAnniversary,
         {
@@ -92,6 +95,7 @@ class Index {
         }
       );
     };
+
     const hammerMenuButton = new Hammer(this.$menuButton);
     hammerMenuButton.on('tap', (e) => {
       e.preventDefault();
