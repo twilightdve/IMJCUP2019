@@ -13,6 +13,10 @@ class Index {
     this.$kvDate = document.querySelector('.kv__date');
     this.$kvScroll = document.querySelector('.kv__scrolldown');
     this.$pcText = document.querySelector('.js-pctext');
+    this.$teamItems = document.querySelectorAll('.team__item');
+    this.$teamModals = document.querySelectorAll('.team__modal__content');
+    this.$modalOverlay = document.querySelector('.team__modal__overlay');
+    // メニューの開閉
     this.isOpen = false;
     this.initialize();
   }
@@ -102,6 +106,22 @@ class Index {
     hammerTopButton.on('tap', (e) => {
       e.preventDefault();
       this.toggleMenu();
+    });
+    for (let i = 0; i < this.$teamItems.length; ++i) {
+      const teamItem = new Hammer(this.$teamItems[i]);
+      teamItem.on('tap', (e) => {
+        e.preventDefault();
+        this.$teamModals[i].classList.add('is-active');
+        this.$modalOverlay.classList.add('is-active');
+      });
+    }
+    const hammerModalOverlay = new Hammer(this.$modalOverlay);
+    hammerModalOverlay.on('tap', (e) => {
+      e.preventDefault();
+      for (let i = 0; i < this.$teamItems.length; ++i) {
+        this.$teamModals[i].classList.remove('is-active');
+      }
+      this.$modalOverlay.classList.remove('is-active');
     });
   }
 

@@ -252,7 +252,7 @@ body {
 .menu__main {
   position: fixed;
   width: 100%;
-  height: 600px;
+  height: 500px;
   z-index: 3;
   background: #380959; }
 
@@ -277,10 +277,8 @@ body {
   background-image: url(../assets/images/menu__summary-sp.png); }
 
 .menu__item__group {
+  display: block;
   background-image: url(../assets/images/menu__group-sp.png); }
-
-.menu__item__history {
-  background-image: url(../assets/images/menu__history-sp.png); }
 
 .top__selected {
   position: relative; }
@@ -332,9 +330,10 @@ body {
 
 .kv__wrapper {
   width: 100%;
-  height: 3844px;
+  height: 5500px;
   position: relative;
-  text-align: center; }
+  text-align: center;
+  overflow: hidden; }
   .kv__wrapper .kv__kv-sp {
     margin-top: -126px; }
   .kv__wrapper .kv__anniversary {
@@ -408,8 +407,185 @@ body {
       width: 163px;
       height: 16px; }
 
+.team__wrapper {
+  position: absolute;
+  top: 3500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  padding: 0 30px; }
+  .team__wrapper .team__item {
+    width: calc(100% / 3); }
+    .team__wrapper .team__item .team__item__logo {
+      padding-bottom: 55px; }
+  .team__wrapper .team__item--fc-mocchi {
+    position: relative; }
+    .team__wrapper .team__item--fc-mocchi:after {
+      content: '';
+      position: absolute;
+      right: -5px;
+      top: -30px;
+      width: 51px;
+      height: 62px;
+      background-image: url(../assets/images/winner-9th-sp.png);
+      background-position: top center;
+      background-repeat: no-repeat; }
+  .team__wrapper .team__item--jelly-fc {
+    position: relative; }
+    .team__wrapper .team__item--jelly-fc:after {
+      content: '';
+      position: absolute;
+      right: -5px;
+      top: -30px;
+      width: 51px;
+      height: 62px;
+      background-image: url(../assets/images/winner-8th-sp.png);
+      background-position: top center;
+      background-repeat: no-repeat; }
+
+.group-schedule {
+  position: absolute;
+  top: 4955px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  display: block;
+  width: 630px;
+  height: 90px;
+  padding-right: 25px;
+  background-image: -webkit-gradient(linear, left top, right top, from(#5f076f), to(#42107f));
+  background-image: linear-gradient(90deg, #5f076f 0%, #42107f 100%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  color: #fff;
+  font-size: 32px;
+  line-height: 90px;
+  text-decoration: none; }
+  .group-schedule:after {
+    content: '';
+    position: absolute;
+    top: 30px;
+    right: 25px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 14px 0 14px 20px;
+    border-color: transparent transparent transparent #fff; }
+  .group-schedule:hover {
+    -webkit-box-shadow: inset 15em 0 0 0 #42107f;
+            box-shadow: inset 15em 0 0 0 #42107f;
+    color: #FFF;
+    border-color: #fff;
+    font-weight: normal; }
+    .group-schedule:hover:after {
+      border-color: transparent transparent transparent #fff; }
+
+.team__modal__overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out; }
+  .team__modal__overlay.is-active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 9; }
+
+.team__modal__content {
+  position: fixed;
+  top: 25%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 690px;
+  height: 427px;
+  color: #fff;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out; }
+  .team__modal__content.is-active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 9; }
+  .team__modal__content .team__modal__content__upper {
+    padding: 30px 50px;
+    background-image: linear-gradient(45deg, #5f076f 0%, #42107f 100%);
+    height: 250px;
+    opacity: 0.902;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    text-align: left;
+    position: relative; }
+    .team__modal__content .team__modal__content__upper img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      margin: auto; }
+  .team__modal__content .team__modal__content__lower {
+    padding: 30px 50px;
+    background: #FFF;
+    font-size: 28px;
+    line-height: 44px;
+    text-align: left; }
+    .team__modal__content .team__modal__content__lower .team__modal__content__lower__headline {
+      color: #c0a4e2;
+      padding-bottom: 15px; }
+    .team__modal__content .team__modal__content__lower .team__modal__content__lower__text {
+      color: #42107f; }
+    .team__modal__content .team__modal__content__lower .team__modal__content__lower__members {
+      position: relative;
+      text-align: center;
+      display: block;
+      width: 380px;
+      height: 80px;
+      margin: 40px auto 20px;
+      padding-right: 15px;
+      border: 1px solid #480C7E;
+      background: #fff;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      color: #480C7E;
+      font-weight: bold;
+      line-height: 80px;
+      text-decoration: none; }
+      .team__modal__content .team__modal__content__lower .team__modal__content__lower__members:after {
+        content: '';
+        position: absolute;
+        top: 26px;
+        right: 30px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 14px 0 14px 20px;
+        border-color: transparent transparent transparent #490c7e; }
+      .team__modal__content .team__modal__content__lower .team__modal__content__lower__members:hover {
+        -webkit-box-shadow: inset 10em 0 0 5em #fff;
+                box-shadow: inset 10em 0 0 5em #fff;
+        color: #FFF;
+        border-color: #fff;
+        font-weight: normal; }
+        .team__modal__content .team__modal__content__lower .team__modal__content__lower__members:hover:after {
+          border-color: transparent transparent transparent #fff; }
+
 .footer {
-  position: relative;
+  position: absolute;
   bottom: 0;
   left: 0; }
   .footer .footer__facebook {

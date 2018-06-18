@@ -49,9 +49,9 @@ body {
       height: 55px;
       border-radius: 50%;
       margin: -15px 0 0 -15px;
-      transition: background 0.3s;
+      transition: all 0.3s;
       &:hover {
-        background-color: rgba(255,255,255,0.2);
+        opacity: 0.5;
       }
     }
   }
@@ -87,9 +87,9 @@ body {
       margin: -10px -10px 0 0;
       background-repeat: no-repeat;
       background-position: center center;
-      transition: background 0.3s;
+      transition: all 0.3s;
       &:hover {
-        background-color: rgba(255,255,255,0.2);
+        opacity: 0.5;
       }
     }
   }
@@ -105,11 +105,11 @@ body {
 .menu__main {
   position: fixed;
   width: 100%;
-  height: 600px;
+  height: 500px;
   z-index: 3;
   background: #380959;
   @media(min-width: 751px) {
-    height: 520px;
+    height: 420px;
   }
 }
 .menu__list {
@@ -134,8 +134,7 @@ body {
 }
 .menu__item--active {
   &:hover {
-    box-shadow: 0 0.5em 0.5em -0.4em rgba(255,255,255,0.2);
-    transform: translateY(-0.25em);
+    opacity: 0.5;
   }
 }
 .menu__item__top {
@@ -155,20 +154,13 @@ body {
   }
 }
 .menu__item__group {
+  display: block;
   background-image: url(../assets/images/menu__group-sp.png);
   @media(min-width: 751px) {
     cursor: pointer;
     background-image: url(../assets/images/menu__group.png);
   }
 }
-.menu__item__history {
-  background-image: url(../assets/images/menu__history-sp.png);
-  @media(min-width: 751px) {
-    cursor: pointer;
-    background-image: url(../assets/images/menu__history.png);
-  }
-}
-
 
 
 
@@ -385,8 +377,7 @@ body {
     background-position: center center;
     transition: all 0.3s;
     &:hover {
-      box-shadow: 0 0.5em 0.5em -0.4em rgba(255,255,255,0.2);
-      transform: translateY(-0.25em);
+      opacity: 0.5;
     }
   }
 }
