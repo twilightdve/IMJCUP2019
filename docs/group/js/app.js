@@ -10813,6 +10813,7 @@ var Index = function () {
         this.$menuButton.classList.remove('navi__menu__line');
         this.$menuButton.classList.add('navi__menu__close');
         this.$navi.classList.add('navi__close');
+        this.$navi.style.position = 'fixed';
       } else {
         (0, _velocityAnimate2.default)(this.$menu, 'slideUp', {
           duration: 300,
@@ -10829,6 +10830,7 @@ var Index = function () {
         this.$menuButton.classList.remove('navi__menu__close');
         this.$menuButton.classList.add('navi__menu__line');
         this.$navi.classList.remove('navi__close');
+        this.$navi.style.position = 'absolute';
       }
       this.isOpen = !this.isOpen;
     }
