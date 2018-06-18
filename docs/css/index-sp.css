@@ -576,8 +576,8 @@ body {
         border-width: 14px 0 14px 20px;
         border-color: transparent transparent transparent #490c7e; }
       .team__modal__content .team__modal__content__lower .team__modal__content__lower__members:hover {
-        -webkit-box-shadow: inset 10em 0 0 5em #fff;
-                box-shadow: inset 10em 0 0 5em #fff;
+        -webkit-box-shadow: inset 15em 0 0 0 #42107f;
+                box-shadow: inset 15em 0 0 0 #42107f;
         color: #FFF;
         border-color: #fff;
         font-weight: normal; }
