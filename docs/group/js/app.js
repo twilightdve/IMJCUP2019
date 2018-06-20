@@ -29383,7 +29383,7 @@ window.IMJCUP2018.INDEX = window.IMJCUP2018.INDEX || new _index2.default();
  * APIのエンドポイント
  */
 // const endPoint = '/json/';
-var endPoint = 'https://twilightea.jp/api/';
+var endPoint = "https://twilightea.jp/api/";
 //----------------------------------------------------------------------------
 
 /**
@@ -29394,36 +29394,37 @@ var endPoint = 'https://twilightea.jp/api/';
  */
 var EventBus = new _vue2.default();
 
-var $header = document.querySelector('.header');
-var $body = document.querySelector('.upper-tournament');
+var $header = document.querySelector(".header");
+var $body = document.querySelector(".upper-tournament");
 console.log($body);
-$body.addEventListener('scroll', function () {
+$body.addEventListener("scroll", function () {
   var scrollX = window.pageXOffset;
   $header.scrollTo(scrollX, 0);
 });
 
 // チームカラー
 var teamColors = {
-  '.clearfix': '#fff600',
-  '<div>': '#ff4591',
-  'AI': '#ffa200',
-  'Bridge': '#b29e2d',
-  'CC2': '#384174',
-  'D2F': '#4246ff',
-  'FC BlackSoda': '#000000',
-  'FCもっちー': '#44dcec',
-  'Flextimes': '#920011',
-  'IA.EXE.pptx': '#ffffff',
-  'IA.EXE.xlsx': '#860000',
-  'JellyFC': '#686995',
-  'the STRONG 6 man': '#000000',
-  'トーゴシックス': '#b90000',
-  'default': '#2a4253'
+  ".clearfix": "#fff600",
+  "<div>": "#ff4591",
+  AI: "#ffa200",
+  Bridge: "#b29e2d",
+  CC2: "#384174",
+  D2F: "#4246ff",
+  "FC BlackSoda": "#000000",
+  FCもっちー: "#44dcec",
+  Flextimes: "#920011",
+  "IA.EXE.pptx": "#ffffff",
+  "IA.EXE.xlsx": "#860000",
+  JellyFC: "#686995",
+  "the STRONG 6 man": "#000000",
+  トーゴシックス: "#b90000",
+  default: "#2a4253"
+};
 
-  /**
-   * 表示したいセクションを更新した際のイベント
-   */
-};EventBus.$on('nav:selectSection', function (section) {
+/**
+ * 表示したいセクションを更新した際のイベント
+ */
+EventBus.$on("nav:selectSection", function (section) {
   store.section = section;
 
   sendUpdateStoreMessage();
@@ -29432,7 +29433,7 @@ var teamColors = {
 /**
  * スケジュールのデータが更新した際のイベント
  */
-EventBus.$on('schedule:update', function (data) {
+EventBus.$on("schedule:update", function (data) {
   store.data.schedule = data;
   console.log(store);
 
@@ -29442,7 +29443,7 @@ EventBus.$on('schedule:update', function (data) {
 /**
  * リーグのデータが更新した際のイベント
  */
-EventBus.$on('teams:update', function (data) {
+EventBus.$on("teams:update", function (data) {
   store.data.teams = data;
   console.log(store);
 
@@ -29452,7 +29453,7 @@ EventBus.$on('teams:update', function (data) {
 /**
  * 決勝トーナメントのデータが更新した際のイベント
  */
-EventBus.$on('final:update', function (data) {
+EventBus.$on("final:update", function (data) {
   store.data.final = data;
   console.log(store);
 
@@ -29465,7 +29466,7 @@ EventBus.$on('final:update', function (data) {
 function sendUpdateStoreMessage() {
   // NOTE: debug
 
-  EventBus.$emit('EventBus:updateStore', store);
+  EventBus.$emit("EventBus:updateStore", store);
 }
 
 //----------------------------------------------------------------------------
@@ -29479,9 +29480,9 @@ var store = {
    * APIのエンドポイント
    */
   api: {
-    schedule: endPoint + 'schedule/?callback',
-    team: endPoint + 'team/?callback',
-    final: endPoint + 'final/?callback'
+    schedule: endPoint + "schedule/?callback",
+    team: endPoint + "team/?callback",
+    final: endPoint + "final/?callback"
     // ローカル開発用
     // schedule: `${endPoint}scheduleJson.json`,
     // team: `${endPoint}teamJson.json`,
@@ -29500,27 +29501,27 @@ var store = {
   /**
    * 表示したいセクション
    */
-  section: 'schedule'
+  section: "schedule"
 };
 
 //----------------------------------------------------------------------------
 var nav = new _vue2.default({
-  el: '#nav',
+  el: "#nav",
   methods: {
     selectSection: function selectSection(e) {
       var ul = this.$refs.sections;
-      var li = ul.querySelectorAll('li');
+      var li = ul.querySelectorAll("li");
 
       _lodash2.default.forEach(li, function (el) {
-        el.classList.remove('is-active');
+        el.classList.remove("is-active");
       });
 
       var target = e.currentTarget;
-      target.classList.add('is-active');
+      target.classList.add("is-active");
 
-      var section = target.getAttribute('data-section');
+      var section = target.getAttribute("data-section");
 
-      EventBus.$emit('nav:selectSection', section);
+      EventBus.$emit("nav:selectSection", section);
     }
   }
 });
@@ -29529,7 +29530,7 @@ var nav = new _vue2.default({
  * スケジュールのコンポーネント
  */
 var schedule = new _vue2.default({
-  el: '#schedule',
+  el: "#schedule",
   methods: {
     updateGames: function updateGames(store) {
       if (store.data.schedule) {
@@ -29672,11 +29673,11 @@ var schedule = new _vue2.default({
       }
     },
     updateDisplay: function updateDisplay(store) {
-      if (store.section === 'schedule') {
-        this.$el.style.display = 'block';
+      if (store.section === "schedule") {
+        this.$el.style.display = "block";
         this.$data.slick.reInit();
       } else {
-        this.$el.style.display = 'none';
+        this.$el.style.display = "none";
       }
     }
   },
@@ -29696,7 +29697,7 @@ var schedule = new _vue2.default({
   created: function created() {
     var _this = this;
 
-    EventBus.$on('EventBus:updateStore', function (store) {
+    EventBus.$on("EventBus:updateStore", function (store) {
       _this.updateGames(store);
       _this.updateDisplay(store);
     });
@@ -29714,7 +29715,7 @@ var schedule = new _vue2.default({
  * リーグのコンポーネント
  */
 var league = new _vue2.default({
-  el: '#league',
+  el: "#league",
   methods: {
     updateGames: function updateGames(store) {
       if (store.data.teams) {
@@ -29723,7 +29724,7 @@ var league = new _vue2.default({
       }
     },
     updateDisplay: function updateDisplay(store) {
-      this.$el.style.display = store.section === 'league' ? 'block' : 'none';
+      this.$el.style.display = store.section === "league" ? "block" : "none";
     }
   },
   data: function data() {
@@ -29736,7 +29737,7 @@ var league = new _vue2.default({
   created: function created() {
     var _this2 = this;
 
-    EventBus.$on('EventBus:updateStore', function (store) {
+    EventBus.$on("EventBus:updateStore", function (store) {
       _this2.updateGames(store);
       _this2.updateDisplay(store);
     });
@@ -29747,7 +29748,7 @@ var league = new _vue2.default({
  * 決勝トーナメントのコンポーネント
  */
 var final = new _vue2.default({
-  el: '#final',
+  el: "#final",
   methods: {
     updateGames: function updateGames(store) {
       var _this3 = this;
@@ -29774,20 +29775,20 @@ var final = new _vue2.default({
           switch (result.result) {
             case 1:
               _this3.$data.upperTeams.push({
-                'name': unescape(result.team1),
-                'color': teamColors[unescape(result.team1)] ? teamColors[unescape(result.team1)] : teamColors.default
+                name: unescape(result.team1),
+                color: teamColors[unescape(result.team1)] ? teamColors[unescape(result.team1)] : teamColors.default
               });
               break;
             case 2:
               _this3.$data.upperTeams.push({
-                'name': unescape(result.team2),
-                'color': teamColors[unescape(result.team2)] ? teamColors[unescape(result.team2)] : teamColors.default
+                name: unescape(result.team2),
+                color: teamColors[unescape(result.team2)] ? teamColors[unescape(result.team2)] : teamColors.default
               });
               break;
             default:
               _this3.$data.upperTeams.push({
-                'name': '',
-                'color': teamColors.default
+                name: "",
+                color: teamColors.default
               });
               break;
           }
@@ -29796,20 +29797,20 @@ var final = new _vue2.default({
           switch (result.result) {
             case 1:
               _this3.$data.lowerTeams.push({
-                'name': unescape(result.team1),
-                'color': teamColors[unescape(result.team1)] ? teamColors[unescape(result.team1)] : teamColors.default
+                name: unescape(result.team1),
+                color: teamColors[unescape(result.team1)] ? teamColors[unescape(result.team1)] : teamColors.default
               });
               break;
             case 2:
               _this3.$data.lowerTeams.push({
-                'name': unescape(result.team2),
-                'color': teamColors[unescape(result.team2)] ? teamColors[unescape(result.team2)] : teamColors.default
+                name: unescape(result.team2),
+                color: teamColors[unescape(result.team2)] ? teamColors[unescape(result.team2)] : teamColors.default
               });
               break;
             default:
               _this3.$data.lowerTeams.push({
-                'name': '',
-                'color': teamColors.default
+                name: "",
+                color: teamColors.default
               });
               break;
           }
@@ -29817,11 +29818,11 @@ var final = new _vue2.default({
       }
     },
     updateDisplay: function updateDisplay(store) {
-      if (store.section === 'final') {
-        this.$el.style.display = 'block';
+      if (store.section === "final") {
+        this.$el.style.display = "block";
         this.$data.slick.reInit();
       } else {
-        this.$el.style.display = 'none';
+        this.$el.style.display = "none";
       }
     }
   },
@@ -29841,7 +29842,7 @@ var final = new _vue2.default({
   created: function created() {
     var _this4 = this;
 
-    EventBus.$on('EventBus:updateStore', function (store) {
+    EventBus.$on("EventBus:updateStore", function (store) {
       _this4.updateGames(store);
       _this4.updateDisplay(store);
     });
@@ -29866,7 +29867,7 @@ _superagent2.default.get(store.api.schedule).use(_superagentJsonp2.default).end(
       schedule = res.schedule;
       // schedule = res.body.schedule;
     } else {
-      console.error('fail schedule');
+      console.error("fail schedule");
     }
 
     /**
@@ -29884,40 +29885,46 @@ _superagent2.default.get(store.api.schedule).use(_superagentJsonp2.default).end(
     var gameMinutes = 0;
 
     _lodash2.default.each(schedule.courtA.schedule, function (game, index) {
-      time = game.time.substr(17, 5).split(':');
+      time = game.time.substr(17, 5).split(":");
       gameHours = parseInt(time[0], 10);
       gameMinutes = parseInt(time[1], 10);
 
       if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
-        schedule.courtA.schedule[index - 1].isNext = true;
-        return false;
+        if (index > 0) {
+          schedule.courtA.schedule[index - 1].isNext = true;
+          return false;
+        }
       }
     });
     //
     _lodash2.default.each(schedule.courtB.schedule, function (game, index) {
-      time = game.time.substr(17, 5).split(':');
+      time = game.time.substr(17, 5).split(":");
       gameHours = parseInt(time[0], 10);
       gameMinutes = parseInt(time[1], 10);
 
       if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
-        schedule.courtB.schedule[index - 1].isNext = true;
-        return false;
+        if (index > 0) {
+          schedule.courtB.schedule[index - 1].isNext = true;
+          return false;
+        }
       }
     });
 
     // 平野追加
     _lodash2.default.each(schedule.courtC.schedule, function (game, index) {
-      time = game.time.substr(17, 5).split(':');
+      time = game.time.substr(17, 5).split(":");
       gameHours = parseInt(time[0], 10);
       gameMinutes = parseInt(time[1], 10);
 
       if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
-        schedule.courtC.schedule[index - 1].isNext = true;
-        return false;
+        if (index > 0) {
+          schedule.courtC.schedule[index - 1].isNext = true;
+          return false;
+        }
       }
     });
 
-    EventBus.$emit('schedule:update', schedule);
+    EventBus.$emit("schedule:update", schedule);
   };
 });
 
@@ -29932,16 +29939,16 @@ _superagent2.default.get(store.api.team)
       teams = res.team;
       // teams = res.body.team;
     } else {
-      console.error('fail team');
+      console.error("fail team");
     }
 
     /**
      * 勝ち点と得失点差が高い順にソートする
      */
-    teams.groupA = _lodash2.default.orderBy(teams.groupA, ['points', 'goalDiff'], ['desc', 'desc']);
-    teams.groupB = _lodash2.default.orderBy(teams.groupB, ['points', 'goalDiff'], ['desc', 'desc']);
+    teams.groupA = _lodash2.default.orderBy(teams.groupA, ["points", "goalDiff"], ["desc", "desc"]);
+    teams.groupB = _lodash2.default.orderBy(teams.groupB, ["points", "goalDiff"], ["desc", "desc"]);
 
-    EventBus.$emit('teams:update', teams);
+    EventBus.$emit("teams:update", teams);
   };
 });
 
@@ -29956,14 +29963,14 @@ _superagent2.default.get(store.api.final)
       final = res;
       // final = res.body;
     } else {
-      console.error('fail final');
+      console.error("fail final");
     }
     /**
      * 勝ち点と得失点差が高い順にソートする
      */
-    final.lower.team = _lodash2.default.orderBy(final.lower.team, ['points', 'goals', 'goalDiff'], ['desc', 'desc']);
+    final.lower.team = _lodash2.default.orderBy(final.lower.team, ["points", "goals", "goalDiff"], ["desc", "desc"]);
 
-    EventBus.$emit('final:update', final);
+    EventBus.$emit("final:update", final);
   };
 });
 
