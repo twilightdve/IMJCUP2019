@@ -395,7 +395,7 @@ body {
 
 .rule {
   width: 100%;
-  height: 6073px;
+  height: 6565px;
   position: relative;
   background-image: url(../assets/images/rule__bg.png);
   background-position: top center;
@@ -403,7 +403,7 @@ body {
   color: #fff; }
   @media (min-width: 751px) {
     .rule {
-      height: 2860px;
+      height: 3060px;
       background-image: url(../assets/images/rule__bg-sp.png); } }
   .rule .rule__block {
     position: absolute;
@@ -420,17 +420,17 @@ body {
     top: 633px; }
     @media (min-width: 751px) {
       .rule .rule__block--about {
-        top: 480px; } }
+        top: 460px; } }
   .rule .rule__block--rule {
-    top: 2150px; }
+    top: 2650px; }
     @media (min-width: 751px) {
       .rule .rule__block--rule {
-        top: 1130px; } }
+        top: 1335px; } }
   .rule .rule__block--foul {
-    top: 3270px; }
+    top: 3770px; }
     @media (min-width: 751px) {
       .rule .rule__block--foul {
-        top: 1700px; } }
+        top: 1910px; } }
   @media (min-width: 751px) {
     .rule .rule__wrapper {
       display: -webkit-box;
@@ -467,6 +467,9 @@ body {
         .rule .rule__list .rule__item {
           font-size: 14px;
           line-height: 28px; } }
+      @media (min-width: 751px) {
+        .rule .rule__list .rule__item .rule__item--small {
+          font-size: 12px; } }
   .rule .rule__list--rule {
     margin: 0;
     padding-top: 20px; }
@@ -495,7 +498,7 @@ body {
   .rule .white-box {
     padding: 30px;
     margin: 20px 20px;
-    background: #FFF;
+    background: #fff;
     color: #42107f; }
     @media (min-width: 751px) {
       .rule .white-box {

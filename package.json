@@ -5,6 +5,11 @@
   "repository": "https://github.com/sunnymerryAce/IMJCUP2018.git",
   "author": "Yoichiro Hirano",
   "license": "MIT",
+  "prettier": {
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "arrowParens": "always"
+  },
   "scripts": {
     "start": "npm run dev & npm run server",
     "build": "NODE_ENV=production webpack --mode production",

@@ -35,6 +35,12 @@ block contents
               li.white-box__item 7チームずつ、2つのグループに分かれる。
               li.white-box__item 試合時間：8分
               li.white-box__item 入れ替わり時間：2分
+              li.white-box__item 全試合終了後、各チームの取得勝点をもとに<br>グループ内の順位を決定。
+              li.white-box__item 
+                | 同勝点で並んだチームがあった場合、<br>当該チーム同士の以下を参照して順位を決定。<br>
+                | ⑴得失点差<br>⑵当該対戦結果<br>⑶得点数<br>⑷失点数<br>⑸じゃんけん
+
+
           .rule__arrow-sp.sp-only
             img(src='./assets/images/rule_arrow-sp.png')
           .white-box
@@ -44,11 +50,14 @@ block contents
               li.white-box__item 予選各リーグの上位3チームは上位トーナメント、下位4チームは下位トーナメントに振り分ける。
               li.white-box__item 試合時間：8分
               li.white-box__item 入れ替わり時間：2分
+              li.white-box__item 同点のまま終了した場合、1人ずつのサドンデス方式のPK戦で勝敗を決定。
 
         ul.rule__list
           li.rule__item 1チーム同時に出場できるのは5人。（フィールドプレイヤー4人、キーパー1人）
           li.rule__item メンバーの交代は無制限です。交代選手がコートの外に出てから、入れ替え選手はコートの中に入りましょう。
           li.rule__item 女性は6人目の選手としてプレー可能です。ただし、得点しても1点のカウント。また、経験者は対象外。
+          li.rule__item 試合開始、終了等は、審判の笛を合図とする。<br>
+            span.rule__item--small （注：前回大会までのラストワンプレーの終了が試合終了の合図ではない）
 
       .rule__block.rule__block--rule
         .rule__wrapper.rule___wrapper--underline
