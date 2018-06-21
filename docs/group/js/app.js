@@ -29396,7 +29396,6 @@ var EventBus = new _vue2.default();
 
 var $header = document.querySelector(".header");
 var $body = document.querySelector(".upper-tournament");
-console.log($body);
 $body.addEventListener("scroll", function () {
   var scrollX = window.pageXOffset;
   $header.scrollTo(scrollX, 0);
@@ -29830,8 +29829,6 @@ var final = new _vue2.default({
     return {
       upperTeams: null,
       upperResults: null,
-      // middleTeams: null,
-      // middleResults: null,
       lowerTeams: null,
       lowerResults: null,
       slick: null,
@@ -29858,121 +29855,125 @@ var final = new _vue2.default({
 
 //----------------------------------------------------------------------------
 
-_superagent2.default.get(store.api.schedule).use(_superagentJsonp2.default).end(function () {
-  // .then(res => {
-  window.scheduleJson = function (res) {
-    var schedule = null;
+// API連携
+sendAllApi();
+setInterval(function () {
+  sendAllApi();
+}, 600000);
 
-    if (res) {
-      schedule = res.schedule;
-      // schedule = res.body.schedule;
-    } else {
-      console.error("fail schedule");
-    }
+function sendAllApi() {
+  _superagent2.default.get(store.api.schedule).use(_superagentJsonp2.default).end(function () {
+    // .then(res => {
+    window.scheduleJson = function (res) {
+      var schedule = null;
 
-    /**
-     * 現在の時刻から一番近い次の試合時間のビューを変更する必要があるため、
-     * スケジュールのデータをループし、次の試合時間のオブジェクトにisNextプロパティを追加する
-     */
-    var date = new Date();
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
-    var time = [];
-    var gameHours = 0;
-    var gameMinutes = 0;
-
-    _lodash2.default.each(schedule.courtA.schedule, function (game, index) {
-      time = game.time.substr(17, 5).split(":");
-      gameHours = parseInt(time[0], 10);
-      gameMinutes = parseInt(time[1], 10);
-
-      if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
-        if (index > 0) {
-          schedule.courtA.schedule[index - 1].isNext = true;
-          return false;
-        }
+      if (res) {
+        schedule = res.schedule;
+        // schedule = res.body.schedule;
+      } else {
+        console.error("fail schedule");
       }
-    });
-    //
-    _lodash2.default.each(schedule.courtB.schedule, function (game, index) {
-      time = game.time.substr(17, 5).split(":");
-      gameHours = parseInt(time[0], 10);
-      gameMinutes = parseInt(time[1], 10);
 
-      if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
-        if (index > 0) {
-          schedule.courtB.schedule[index - 1].isNext = true;
-          return false;
+      /**
+       * 現在の時刻から一番近い次の試合時間のビューを変更する必要があるため、
+       * スケジュールのデータをループし、次の試合時間のオブジェクトにisNextプロパティを追加する
+       */
+      var date = new Date();
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var day = date.getDate();
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var time = [];
+      var gameHours = 0;
+      var gameMinutes = 0;
+
+      _lodash2.default.each(schedule.courtA.schedule, function (game, index) {
+        time = game.time.substr(17, 5).split(":");
+        gameHours = parseInt(time[0], 10);
+        gameMinutes = parseInt(time[1], 10);
+
+        if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
+          if (index > 0) {
+            schedule.courtA.schedule[index - 1].isNext = true;
+            return false;
+          }
         }
-      }
-    });
+      });
+      //
+      _lodash2.default.each(schedule.courtB.schedule, function (game, index) {
+        time = game.time.substr(17, 5).split(":");
+        gameHours = parseInt(time[0], 10);
+        gameMinutes = parseInt(time[1], 10);
 
-    // 平野追加
-    _lodash2.default.each(schedule.courtC.schedule, function (game, index) {
-      time = game.time.substr(17, 5).split(":");
-      gameHours = parseInt(time[0], 10);
-      gameMinutes = parseInt(time[1], 10);
-
-      if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
-        if (index > 0) {
-          schedule.courtC.schedule[index - 1].isNext = true;
-          return false;
+        if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
+          if (index > 0) {
+            schedule.courtB.schedule[index - 1].isNext = true;
+            return false;
+          }
         }
+      });
+
+      // 平野追加
+      _lodash2.default.each(schedule.courtC.schedule, function (game, index) {
+        time = game.time.substr(17, 5).split(":");
+        gameHours = parseInt(time[0], 10);
+        gameMinutes = parseInt(time[1], 10);
+
+        if (new Date(year, month, day, hours, minutes, 0) < new Date(year, month, day, gameHours, gameMinutes, 0)) {
+          if (index > 0) {
+            schedule.courtC.schedule[index - 1].isNext = true;
+            return false;
+          }
+        }
+      });
+
+      EventBus.$emit("schedule:update", schedule);
+    };
+  });
+
+  _superagent2.default.get(store.api.team).use(_superagentJsonp2.default).end(function () {
+    // .then(res => {
+    window.teamJson = function (res) {
+      var teams = null;
+
+      if (res) {
+        teams = res.team;
+        // teams = res.body.team;
+      } else {
+        console.error("fail team");
       }
-    });
 
-    EventBus.$emit("schedule:update", schedule);
-  };
-});
+      /**
+       * 勝ち点と得失点差が高い順にソートする
+       */
+      teams.groupA = _lodash2.default.orderBy(teams.groupA, ["points", "goalDiff"], ["desc", "desc"]);
+      teams.groupB = _lodash2.default.orderBy(teams.groupB, ["points", "goalDiff"], ["desc", "desc"]);
 
-_superagent2.default.get(store.api.team)
-// ローカル開発用
-.use(_superagentJsonp2.default).end(function () {
-  // .then(res => {
-  window.teamJson = function (res) {
-    var teams = null;
+      EventBus.$emit("teams:update", teams);
+    };
+  });
 
-    if (res) {
-      teams = res.team;
-      // teams = res.body.team;
-    } else {
-      console.error("fail team");
-    }
+  _superagent2.default.get(store.api.final).use(_superagentJsonp2.default).end(function () {
+    // .then(res => {
+    window.finalJson = function (res) {
+      var final = null;
+      if (res) {
+        // if (res.body) {
+        final = res;
+        // final = res.body;
+      } else {
+        console.error("fail final");
+      }
+      /**
+       * 勝ち点と得失点差が高い順にソートする
+       */
+      final.lower.team = _lodash2.default.orderBy(final.lower.team, ["points", "goals", "goalDiff"], ["desc", "desc"]);
 
-    /**
-     * 勝ち点と得失点差が高い順にソートする
-     */
-    teams.groupA = _lodash2.default.orderBy(teams.groupA, ["points", "goalDiff"], ["desc", "desc"]);
-    teams.groupB = _lodash2.default.orderBy(teams.groupB, ["points", "goalDiff"], ["desc", "desc"]);
-
-    EventBus.$emit("teams:update", teams);
-  };
-});
-
-_superagent2.default.get(store.api.final)
-// ローカル用にコメントアウト
-.use(_superagentJsonp2.default).end(function () {
-  // .then(res => {
-  window.finalJson = function (res) {
-    var final = null;
-    if (res) {
-      // if (res.body) {
-      final = res;
-      // final = res.body;
-    } else {
-      console.error("fail final");
-    }
-    /**
-     * 勝ち点と得失点差が高い順にソートする
-     */
-    final.lower.team = _lodash2.default.orderBy(final.lower.team, ["points", "goals", "goalDiff"], ["desc", "desc"]);
-
-    EventBus.$emit("final:update", final);
-  };
-});
+      EventBus.$emit("final:update", final);
+    };
+  });
+}
 
 /***/ }),
 /* 13 */
