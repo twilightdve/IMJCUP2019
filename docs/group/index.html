@@ -186,47 +186,50 @@
                 <div class="upper-tournament" v-if="upperResults">
                   <div class="upper-tournament__column upper-tournament__ikkaisen">
                     <div class="upper-tournament__item upper-tournament__item--1" v-bind:style="{ borderColor: upperTeams[0].color }">
-                      <div class="final-team">{{upperTeams[0].name}}</div>
+                      <div class="final-team" v-bind:class="{ loser: upperResults[2].result === 2}">{{upperTeams[0].name}}</div>
                     </div>
                     <div class="upper-tournament__ikkaisen__battle" v-bind:class="{ win1: upperResults[0].result === 1, win2: upperResults[0].result === 2}">
                       <div class="upper-tournament__item" v-bind:style="{ borderColor: upperTeams[1].color }">
-                        <div class="final-team">{{upperTeams[1].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: upperResults[0].result === 2}">{{upperTeams[1].name}}</div>
                       </div>
                       <div class="upper-tournament__item" v-bind:style="{ borderColor: upperTeams[2].color }">
-                        <div class="final-team">{{upperTeams[2].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: upperResults[0].result === 1}">{{upperTeams[2].name}}</div>
                       </div>
                     </div>
                     <div class="upper-tournament__ikkaisen__battle" v-bind:class="{ win1: upperResults[1].result === 1, win2: upperResults[1].result === 2}">
                       <div class="upper-tournament__item" v-bind:style="{ borderColor: upperTeams[3].color }">
-                        <div class="final-team">{{upperTeams[3].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: upperResults[1].result === 1}">{{upperTeams[3].name}}</div>
                       </div>
                       <div class="upper-tournament__item" v-bind:style="{ borderColor: upperTeams[4].color }">
-                        <div class="final-team">{{upperTeams[4].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: upperResults[1].result === 2}">{{upperTeams[4].name}}</div>
                       </div>
                     </div>
                     <div class="upper-tournament__item upper-tournament__item--6" v-bind:style="{ borderColor: upperTeams[5].color }">
-                      <div class="final-team">{{upperTeams[5].name}}</div>
+                      <div class="final-team" v-bind:class="{ loser: upperResults[3].result === 1}">{{upperTeams[5].name}}</div>
                     </div>
                   </div>
                   <div class="upper-tournament__column upper-tournament__nikaisen">
                     <div class="upper-tournament__nikaisen__battle" v-bind:class="{ win1: upperResults[2].result === 1, win2: upperResults[2].result === 2}">
                       <div class="upper-tournament__item" v-bind:style="{ borderColor: upperTeams[6].color }">
-                        <div class="final-team">{{upperTeams[6].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: upperResults[2].result === 1}">{{upperTeams[6].name}}</div>
                       </div>
                     </div>
                     <div class="upper-tournament__nikaisen__battle upper-tournament__nikaisen__battle--2" v-bind:class="{ win1: upperResults[3].result === 1, win2: upperResults[3].result === 2}">
                       <div class="upper-tournament__item upper-tournament__item--team2" v-bind:style="{ borderColor: upperTeams[7].color }">
-                        <div class="final-team">{{upperTeams[7].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: upperResults[3].result === 2}">{{upperTeams[7].name}}</div>
                       </div>
                     </div>
                   </div>
                   <div class="upper-tournament__column upper-tournament__final">
                     <div class="upper-tournament__final__battle" v-bind:class="{ win1: upperResults[4].result === 1, win2: upperResults[4].result === 2}">
                       <div class="upper-tournament__item" v-bind:style="{ borderColor: upperTeams[8].color }">
-                        <div class="final-team">{{upperTeams[8].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: upperResults[4].result === 2}">{{upperTeams[8].name}}</div>
                       </div>
                       <div class="upper-tournament__item upper-tournament__item--team2" v-bind:style="{ borderColor: upperTeams[9].color }">
-                        <div class="final-team">{{upperTeams[9].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: upperResults[4].result === 1}">{{upperTeams[9].name}}</div>
+                      </div>
+                      <div class="upper-tournament__item upper-tournament__item--team3rd" v-bind:style="{ borderColor: upperTeams[10].color }">
+                        <div class="final-team">{{upperTeams[10].name}}</div>
                       </div>
                     </div>
                   </div>
@@ -237,8 +240,8 @@
                   </div>
                 </div>
               </div>
+              <!--.final-wrap-item(v-show="isUpper")-->
             </div>
-            <!--.final-wrap-item(v-show="isUpper")-->
             <!--  .final-tournament(v-if="upperResults", v-bind:class="{ win1: upperResults[3].result === 1, win2: upperResults[3].result === 2}")-->
             <!--    .final-tournament-top(v-bind:class="{ win1: upperResults[0].result === 1, win2: upperResults[0].result === 2}")-->
             <!--      .final-tournament-item-->
@@ -270,62 +273,62 @@
                   <div class="lower-tournament__column lower-tournament__ikkaisen">
                     <div class="lower-tournament__ikkaisen__battle" v-bind:class="{ win1: lowerResults[0].result === 1, win2: lowerResults[0].result === 2}">
                       <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[0].color }">
-                        <div class="final-team">{{lowerTeams[0].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: lowerResults[0].result === 2}">{{lowerTeams[0].name}}</div>
                       </div>
                       <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[1].color }">
-                        <div class="final-team">{{lowerTeams[1].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: lowerResults[0].result === 1}">{{lowerTeams[1].name}}</div>
                       </div>
                     </div>
                     <div class="lower-tournament__ikkaisen__battle" v-bind:class="{ win1: lowerResults[1].result === 1, win2: lowerResults[1].result === 2}">
                       <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[2].color }">
-                        <div class="final-team">{{lowerTeams[2].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: lowerResults[1].result === 2}">{{lowerTeams[2].name}}</div>
                       </div>
                       <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[3].color }">
-                        <div class="final-team">{{lowerTeams[3].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: lowerResults[1].result === 1}">{{lowerTeams[3].name}}</div>
                       </div>
                     </div>
                     <div class="lower-tournament__ikkaisen__battle" v-bind:class="{ win1: lowerResults[2].result === 1, win2: lowerResults[2].result === 2}">
                       <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[4].color }">
-                        <div class="final-team">{{lowerTeams[4].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: lowerResults[2].result === 2}">{{lowerTeams[4].name}}</div>
                       </div>
                       <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[5].color }">
-                        <div class="final-team">{{lowerTeams[5].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: lowerResults[2].result === 1}">{{lowerTeams[5].name}}</div>
                       </div>
                     </div>
                     <div class="lower-tournament__ikkaisen__battle" v-bind:class="{ win1: lowerResults[3].result === 1, win2: lowerResults[3].result === 2}">
                       <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[6].color }">
-                        <div class="final-team">{{lowerTeams[6].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: lowerResults[3].result === 2}">{{lowerTeams[6].name}}</div>
                       </div>
                       <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[7].color }">
-                        <div class="final-team">{{lowerTeams[7].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: lowerResults[3].result === 1}">{{lowerTeams[7].name}}</div>
                       </div>
                     </div>
                   </div>
                   <div class="lower-tournament__column lower-tournament__nikaisen">
                     <div class="lower-tournament__nikaisen__battle" v-bind:class="{ win1: lowerResults[4].result === 1, win2: lowerResults[4].result === 2}">
                       <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[8].color }">
-                        <div class="final-team">{{lowerTeams[8].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: lowerResults[4].result === 2}">{{lowerTeams[8].name}}</div>
                       </div>
                       <div class="lower-tournament__item lower-tournament__item--team2" v-bind:style="{ borderColor: lowerTeams[9].color }">
-                        <div class="final-team">{{lowerTeams[9].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: lowerResults[4].result === 1}">{{lowerTeams[9].name}}</div>
                       </div>
                     </div>
                     <div class="lower-tournament__nikaisen__battle lower-tournament__nikaisen__battle--2" v-bind:class="{ win1: lowerResults[5].result === 1, win2: lowerResults[5].result === 2}">
                       <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[10].color }">
-                        <div class="final-team">{{lowerTeams[10].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: lowerResults[5].result === 2}">{{lowerTeams[10].name}}</div>
                       </div>
                       <div class="lower-tournament__item lower-tournament__item--team2" v-bind:style="{ borderColor: lowerTeams[11].color }">
-                        <div class="final-team">{{lowerTeams[11].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: lowerResults[5].result === 1}">{{lowerTeams[11].name}}</div>
                       </div>
                     </div>
                   </div>
                   <div class="lower-tournament__column lower-tournament__final">
                     <div class="lower-tournament__final__battle" v-bind:class="{ win1: lowerResults[6].result === 1, win2: lowerResults[6].result === 2}">
                       <div class="lower-tournament__item" v-bind:style="{ borderColor: lowerTeams[12].color }">
-                        <div class="final-team">{{lowerTeams[12].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: lowerResults[6].result === 2}">{{lowerTeams[12].name}}</div>
                       </div>
                       <div class="lower-tournament__item lower-tournament__item--team2" v-bind:style="{ borderColor: lowerTeams[13].color }">
-                        <div class="final-team">{{lowerTeams[13].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: lowerResults[6].result === 1}">{{lowerTeams[13].name}}</div>
                       </div>
                     </div>
                   </div>
