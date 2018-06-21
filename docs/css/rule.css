@@ -462,11 +462,13 @@ body {
     .rule .rule__list .rule__item {
       color: rgba(255, 255, 255, 0.8);
       font-size: 24px;
-      line-height: 36px; }
+      line-height: 36px;
+      padding-bottom: 10px; }
       @media (min-width: 751px) {
         .rule .rule__list .rule__item {
           font-size: 14px;
-          line-height: 28px; } }
+          line-height: 28px;
+          padding-bottom: 0; } }
       @media (min-width: 751px) {
         .rule .rule__list .rule__item .rule__item--small {
           font-size: 12px; } }
