@@ -223,10 +223,10 @@
                   <div class="upper-tournament__column upper-tournament__final">
                     <div class="upper-tournament__final__battle" v-bind:class="{ win1: upperResults[4].result === 1, win2: upperResults[4].result === 2}">
                       <div class="upper-tournament__item" v-bind:style="{ borderColor: upperTeams[8].color }">
-                        <div class="final-team" v-bind:class="{ loser: upperResults[4].result === 2}">{{upperTeams[8].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: upperResults[5].result === 2}">{{upperTeams[8].name}}</div>
                       </div>
                       <div class="upper-tournament__item upper-tournament__item--team2" v-bind:style="{ borderColor: upperTeams[9].color }">
-                        <div class="final-team" v-bind:class="{ loser: upperResults[4].result === 1}">{{upperTeams[9].name}}</div>
+                        <div class="final-team" v-bind:class="{ loser: upperResults[5].result === 1}">{{upperTeams[9].name}}</div>
                       </div>
                       <div class="upper-tournament__item upper-tournament__item--team3rd" v-bind:style="{ borderColor: upperTeams[10].color }">
                         <div class="final-team">{{upperTeams[10].name}}</div>
