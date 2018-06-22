@@ -239,8 +239,8 @@ html {
   height: 100%; }
 
 body {
-  background: #00022B;
-  font-family: "游ゴシック", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif; }
+  background: #00022b;
+  font-family: '游ゴシック', 'ヒラギノ角ゴ Pro W3', 'メイリオ', sans-serif; }
 
 .menu__overlay {
   position: fixed;
@@ -291,7 +291,7 @@ body {
     margin: 0 auto;
     width: 100px;
     height: 4px;
-    background: #FFF; }
+    background: #fff; }
 
 .navi {
   position: fixed;
@@ -367,7 +367,7 @@ body {
     display: block;
     width: 380px;
     height: 92px;
-    background: #FFF; }
+    background: #fff; }
     .kv__wrapper .about img {
       position: absolute;
       top: 0;
@@ -396,7 +396,7 @@ body {
     display: block;
     width: 242px;
     height: 56px;
-    background: #FFF; }
+    background: #fff; }
     .detail .about img {
       position: absolute;
       top: 0;
@@ -478,13 +478,12 @@ body {
     border-width: 14px 0 14px 20px;
     border-color: transparent transparent transparent #fff; }
   .group-schedule:hover {
-    -webkit-box-shadow: inset 15em 0 0 0 #42107f;
-            box-shadow: inset 15em 0 0 0 #42107f;
-    color: #FFF;
-    border-color: #fff;
-    font-weight: normal; }
+    color: #42107f;
+    border-color: #42107f;
+    font-weight: bold;
+    background: #fff; }
     .group-schedule:hover:after {
-      border-color: transparent transparent transparent #fff; }
+      border-color: transparent transparent transparent #42107f; }
 
 .team__modal__overlay {
   position: fixed;
@@ -543,7 +542,7 @@ body {
       margin: auto; }
   .team__modal__content .team__modal__content__lower {
     padding: 30px 50px;
-    background: #FFF;
+    background: #fff;
     font-size: 28px;
     line-height: 44px;
     text-align: left; }
@@ -560,11 +559,11 @@ body {
       height: 80px;
       margin: 40px auto 20px;
       padding-right: 15px;
-      border: 1px solid #480C7E;
+      border: 1px solid #480c7e;
       background: #fff;
       -webkit-transition: all 0.3s;
       transition: all 0.3s;
-      color: #480C7E;
+      color: #480c7e;
       font-weight: bold;
       line-height: 80px;
       text-decoration: none; }
@@ -581,7 +580,7 @@ body {
       .team__modal__content .team__modal__content__lower .team__modal__content__lower__members:hover {
         -webkit-box-shadow: inset 15em 0 0 0 #42107f;
                 box-shadow: inset 15em 0 0 0 #42107f;
-        color: #FFF;
+        color: #fff;
         border-color: #fff;
         font-weight: normal; }
         .team__modal__content .team__modal__content__lower .team__modal__content__lower__members:hover:after {

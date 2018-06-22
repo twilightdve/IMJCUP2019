@@ -397,11 +397,11 @@ body {
   width: 242px;
   height: 56px;
   padding-right: 15px;
-  border: 1px solid #480C7E;
+  border: 1px solid #480c7e;
   background: #fff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  color: #480C7E;
+  color: #480c7e;
   font-size: 16px;
   font-weight: bold;
   line-height: 56px;
@@ -419,7 +419,7 @@ body {
   .about:hover {
     -webkit-box-shadow: inset 15em 0 0 0 #42107f;
             box-shadow: inset 15em 0 0 0 #42107f;
-    color: #FFF;
+    color: #fff;
     border-color: #fff;
     font-weight: normal; }
     .about:hover:after {
@@ -527,6 +527,7 @@ body {
   width: 320px;
   height: 56px;
   padding-right: 15px;
+  border: 1px solid #00022b;
   background-image: -webkit-gradient(linear, left top, right top, from(#5f076f), to(#42107f));
   background-image: linear-gradient(90deg, #5f076f 0%, #42107f 100%);
   -webkit-transition: all 0.3s;
@@ -546,11 +547,10 @@ body {
     border-width: 7px 0 7px 10px;
     border-color: transparent transparent transparent #fff; }
   .group-schedule:hover {
-    -webkit-box-shadow: inset 10em 0 0 5em #fff;
-            box-shadow: inset 10em 0 0 5em #fff;
     color: #42107f;
     border-color: #42107f;
-    font-weight: bold; }
+    font-weight: bold;
+    background: #fff; }
     .group-schedule:hover:after {
       border-color: transparent transparent transparent #42107f; }
 
@@ -611,7 +611,7 @@ body {
       margin: auto; }
   .team__modal__content .team__modal__content__lower {
     padding: 30px 50px;
-    background: #FFF;
+    background: #fff;
     font-size: 14px;
     line-height: 22px;
     text-align: left; }
@@ -628,11 +628,11 @@ body {
       height: 48px;
       margin: 40px auto 20px;
       padding-right: 15px;
-      border: 1px solid #480C7E;
+      border: 1px solid #480c7e;
       background: #fff;
       -webkit-transition: all 0.3s;
       transition: all 0.3s;
-      color: #480C7E;
+      color: #480c7e;
       font-size: 16px;
       font-weight: bold;
       line-height: 48px;
@@ -650,7 +650,7 @@ body {
       .team__modal__content .team__modal__content__lower .team__modal__content__lower__members:hover {
         -webkit-box-shadow: inset 15em 0 0 0 #42107f;
                 box-shadow: inset 15em 0 0 0 #42107f;
-        color: #FFF;
+        color: #fff;
         border-color: #fff;
         font-weight: normal; }
         .team__modal__content .team__modal__content__lower .team__modal__content__lower__members:hover:after {
